@@ -28,6 +28,9 @@ body {
     --input: 213 30% 50%;
     --ring: 213 15% 90%;
     --radius: 0.5rem;
+    --bg-color: #0e1217;
+    --grid-color: #a8b3cf;
+    --star-color: #a8b3cf;
   }
   .dark {
     --background: (213, 24%, 7%);

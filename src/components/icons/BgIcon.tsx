@@ -38,7 +38,12 @@ const BgIcon: React.FC<BgIconProps> = ({
       preserveAspectRatio='xMidYMid slice'
     >
       {/* Background */}
-      <rect width='2000' height='2000' fill={bgClr} />
+      <rect
+        width='2000'
+        height='2000'
+        fill={bgClr}
+        style={{ transition: 'fill 0.3s ease-in' }}
+      />
 
       {/* Grid pattern */}
       <pattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'>
@@ -51,6 +56,7 @@ const BgIcon: React.FC<BgIconProps> = ({
           stroke={gridClr}
           strokeWidth='0.06'
           strokeDasharray='1,1'
+          style={{ transition: 'stroke 0.3s ease-in' }}
         />
         {/* Vertical dashed line */}
         <line
@@ -68,7 +74,11 @@ const BgIcon: React.FC<BgIconProps> = ({
       <rect width='2000' height='2000' fill='url(#grid)' />
 
       {/* Stars */}
-      <g fill={starClr} opacity={theme === 'dark' ? '1' : '0'}>
+      <g
+        style={{ transition: 'opacity 2s ease-in,fill 0.2s ease' }}
+        fill={theme === 'dark' ? starClr : 'transparent'}
+        opacity={theme === 'dark' ? '1' : '0'}
+      >
         <polygon points='60,55 60.25,55.55 60.75,55.55 60.5,55.9 60.6,56.4 60,56.1 59.4,56.4 59.5,55.9 59.25,55.55 59.75,55.55' />
         <polygon points='10,20 10.25,20.55 10.75,20.55 10.5,20.9 10.6,21.4 10,21.1 9.4,21.4 9.5,20.9 9.25,20.55 9.75,20.55' />
         <polygon points='25,35 25.25,35.55 25.75,35.55 25.5,35.9 25.6,36.4 25,36.1 24.4,36.4 24.5,35.9 24.25,35.55 24.75,35.55' />
