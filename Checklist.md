@@ -42,7 +42,7 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 - [ ] **Typography and Fonts**
 
-  - [ ] Choose a font family (e.g., Inter, Roboto, or custom Google Fonts).
+  - [x] Choose a font family (e.g., Inter, Roboto, or custom Google Fonts).
   - [ ] Define font sizes for headings, subheadings, and body text.
 
 - [ ] **UI Components**
