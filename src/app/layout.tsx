@@ -33,7 +33,7 @@ export default function RootLayout({
         >
           <div className='relative min-h-screen'>
             {children}
-            <div className='absolute z-[-1] top-0 left-0  bottom-0 w-full h-full'>
+            <div>
               <BgIcon />
             </div>
           </div>
