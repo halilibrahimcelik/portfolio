@@ -30,15 +30,15 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 #### **1. UI Design and Theme**
 
-- [ ] **Dark/Light Theme Toggle**
+- [x] **Dark/Light Theme Toggle**
 
-  - [ ] Choose a color palette for both dark and light themes.
+  - [x] Choose a color palette for both dark and light themes.
     - Light Theme: Primary, secondary, and background colors.
     - Dark Theme: Primary, secondary, and background colors.
-  - [ ] Add a toggle button (sun/moon icon) using shadcn/ui.
-  - [ ] Implement theme switching using CSS variables and Context API.
-  - [ ] Save user preference in local storage.
-  - [ ] Ensure smooth transitions between themes using Framer Motion.
+  - [x] Add a toggle button (sun/moon icon) using shadcn/ui.
+  - [x] Implement theme switching using CSS variables and Context API.
+  - [x] Save user preference in local storage.
+  - [] Ensure smooth transitions between themes using Framer Motion.
 
 - [ ] **Typography and Fonts**
 
