@@ -1,6 +1,4 @@
 import { Heading, Text } from '@/components/theme/typography';
-import ThemeToggle from '@/components/ThemeToggle';
-import Container from '@/components/ui/Container';
 import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = {
@@ -10,13 +8,8 @@ export const metadata: Metadata = {
 const HomePage: NextPage = () => {
   return (
     <main>
-      <Container>
-        <Heading variant='h1'>Hello, World!</Heading>
-        <Text>Welcome to my website.</Text>
-        <div className='flex items-end justify-end '>
-          <ThemeToggle />
-        </div>
-      </Container>
+      <Heading variant='h1'>Hello, World!</Heading>
+      <Text>Welcome to my website.</Text>
     </main>
   );
 };

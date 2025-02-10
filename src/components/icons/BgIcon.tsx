@@ -3,6 +3,7 @@ import { generateRandomStars } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
 import { Loader } from 'lucide-react';
+import { COLOR_PALETTE } from '../theme/colors';
 interface BgIconProps {
   bgColor?: string;
   gridColor?: string;
@@ -10,9 +11,9 @@ interface BgIconProps {
 }
 
 const BgIcon: React.FC<BgIconProps> = ({
-  bgColor = '#0e1217',
-  gridColor = '#a8b3cf',
-  starColor = '#a8b3cf',
+  bgColor = COLOR_PALETTE.primary_dark,
+  gridColor = COLOR_PALETTE.primary_light,
+  starColor = COLOR_PALETTE.primary_light,
 }) => {
   const [gridClr, setGridColor] = useState(gridColor);
   const [starClr, setStarColor] = useState(starColor);
@@ -23,12 +24,12 @@ const BgIcon: React.FC<BgIconProps> = ({
   useEffect(() => setMounted(true), []);
   useEffect(() => {
     if (theme === 'dark') {
-      setGridColor('#a8b3cf');
-      setStarColor('#a8b3cf');
-      setBgColor('#0e1217');
+      setGridColor(COLOR_PALETTE.primary_light);
+      setStarColor(COLOR_PALETTE.primary_light);
+      setBgColor(COLOR_PALETTE.primary_dark);
     } else {
-      setGridColor('#0e1217');
-      setStarColor('#0e1217');
+      setGridColor(COLOR_PALETTE.primary_dark);
+      setStarColor(COLOR_PALETTE.primary_dark);
       setBgColor('#fff');
     }
   }, [theme]);
