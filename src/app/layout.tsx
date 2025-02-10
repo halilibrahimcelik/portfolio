@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Work_Sans, Open_Sans } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from './providers/ThemeProvider';
+import { ThemeProvider } from '@/providers/ThemeProvider';
 import BgIcon from '@/components/icons/BgIcon';
 
 const workSans = Work_Sans({

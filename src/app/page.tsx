@@ -1,3 +1,4 @@
+import { Heading, Text } from '@/components/theme/typography';
 import ThemeToggle from '@/components/ThemeToggle';
 import Container from '@/components/ui/Container';
 import { Metadata, NextPage } from 'next';
@@ -10,8 +11,8 @@ const HomePage: NextPage = () => {
   return (
     <main>
       <Container>
-        <h1>Hello, World!</h1>
-        <p>Welcome to my website.</p>
+        <Heading variant='h1'>Hello, World!</Heading>
+        <Text>Welcome to my website.</Text>
         <div className='flex items-end justify-end '>
           <ThemeToggle />
         </div>

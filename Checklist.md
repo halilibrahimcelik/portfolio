@@ -40,10 +40,10 @@ Here’s a checklist of all the features and tasks I need to complete for this p
   - [x] Save user preference in local storage.
   - [] Ensure smooth transitions between themes using Framer Motion.
 
-- [ ] **Typography and Fonts**
+- [x] **Typography and Fonts**
 
   - [x] Choose a font family (e.g., Inter, Roboto, or custom Google Fonts).
-  - [ ] Define font sizes for headings, subheadings, and body text.
+  - [x] Define font sizes for headings, subheadings, and body text.
 
 - [ ] **UI Components**
 

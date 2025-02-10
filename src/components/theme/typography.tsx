@@ -24,7 +24,7 @@ const smallTextStyles = {
   xs: 'text-[0.7rem] md:text-xs lg:text-sm', // Extra small
 };
 
-export function SmallText({
+export function Text({
   variant = 'default',
   children,
   className,
