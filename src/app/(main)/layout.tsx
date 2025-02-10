@@ -1,22 +1,25 @@
 import StickyHeader from '@/components/header/StickyHeader';
 import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
+import { Card } from '@/components/ui/card';
 import Container from '@/components/ui/Container';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='relative min-h-screen'>
-      <Container>
-        <StickyHeader />
-        <div className='flex justify-between items-center py-4'>
-          <Logo />
-          <div className='flex items-end justify-end '>
-            <ThemeToggle />
-          </div>
+    <Container>
+      <div className='flex justify-between items-center py-4'>
+        <Logo />
+        <div className='flex items-end justify-end '>
+          <ThemeToggle />
         </div>
-        {children}
-      </Container>
-    </div>
+      </div>
+      <div className='flex gap-4  relative  min-h-[200vh]'>
+        <StickyHeader />
+        <Card asChild className='flex-grow '>
+          <main>{children}</main>
+        </Card>
+      </div>
+    </Container>
   );
 };
 export default MainLayout;

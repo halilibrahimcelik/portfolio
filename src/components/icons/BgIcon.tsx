@@ -36,7 +36,7 @@ const BgIcon: React.FC<BgIconProps> = ({
   if (!mounted)
     return (
       <div className='absolute z-[100] top-0 left-0  bottom-0 w-full h-full bg-background-hex'>
-        <div className='flex z-50  items-center justify-center w-full h-full opacity-50'>
+        <div className='flex z-50  items-center justify-center w-full h-full opacity-90'>
           <Loader width={75} height={75} className='animate-spin' />
         </div>
       </div>
