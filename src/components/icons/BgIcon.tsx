@@ -40,7 +40,7 @@ const BgIcon: React.FC<BgIconProps> = ({
       <div className='fixed  top-0 left-0  bottom-0 w-full h-full bg-background-hex'>
         <div className='flex z-50  items-center justify-center w-full h-full '>
           <Loader
-            color='#fff'
+            color={COLOR_PALETTE.primary_light}
             width={75}
             height={75}
             className='animate-spin'

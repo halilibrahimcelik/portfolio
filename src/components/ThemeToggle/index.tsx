@@ -35,7 +35,7 @@ const ThemeToggle: React.FC = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            className='rounded-full relative'
+            className='WS relative'
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             variant='secondary'
             size='icon'
@@ -51,7 +51,7 @@ const ThemeToggle: React.FC = () => {
           </Button>
         </TooltipTrigger>
         <TooltipContent
-          className='rounded-full py-1 px-2'
+          className='rounded-xl py-1 px-2'
           side='right'
           sideOffset={4}
         >
