@@ -21,7 +21,8 @@ export function Heading({ variant, children, className }: HeadingProps) {
 const smallTextStyles = {
   default: 'text-sm md:text-base lg:text-lg',
   small: 'text-xs md:text-sm lg:text-base',
-  xs: 'text-[0.7rem] md:text-xs lg:text-sm', // Extra small
+  xs: 'text-[0.7rem] md:text-xs ', // Extra small
+  badge: 'text-[10px]',
 };
 
 export function Text({
