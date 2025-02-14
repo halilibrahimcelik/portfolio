@@ -31,11 +31,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className='relative min-h-screen'>
+          <div className='relative h-full'>
             {children}
-            <div>
-              <BgIcon />
-            </div>
+
+            <BgIcon />
           </div>
         </ThemeProvider>
       </body>

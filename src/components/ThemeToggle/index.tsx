@@ -32,11 +32,11 @@ const ThemeToggle: React.FC = () => {
         variant='secondary'
         size='icon'
       >
-        <SunIcon
+        <MoonIcon
           className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
       ${darkModeClass}`}
         />
-        <MoonIcon
+        <SunIcon
           className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
       ${lightModeClass}`}
         />
