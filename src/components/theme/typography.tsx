@@ -22,7 +22,7 @@ const smallTextStyles = {
   default: 'text-sm md:text-base lg:text-lg',
   small: 'text-xs md:text-sm lg:text-base',
   xs: 'text-[0.7rem] md:text-xs ', // Extra small
-  badge: 'text-[10px]',
+  badge: 'text-[9px]',
 };
 
 export function Text({

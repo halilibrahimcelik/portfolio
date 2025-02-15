@@ -3,13 +3,9 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { Text } from '../theme/typography';
+import { Card } from '../ui/card';
+
 const ThemeToggle: React.FC = () => {
   const { setTheme, theme } = useTheme();
   const [darkModeClass, setDarkModeClass] = useState('');
@@ -30,37 +26,31 @@ const ThemeToggle: React.FC = () => {
     }
   }, [theme]);
   if (!isMounted) return null;
+
   return (
-    <TooltipProvider disableHoverableContent delayDuration={200}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            className='WS relative'
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            variant='secondary'
-            size='icon'
-          >
-            <MoonIcon
-              className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
-      ${darkModeClass}`}
-            />
-            <SunIcon
-              className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
-      ${lightModeClass}`}
-            />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent
-          className='rounded-xl py-1 px-2'
-          side='right'
-          sideOffset={4}
-        >
-          <Text variant='badge'>
-            {theme !== 'dark' ? 'Light Mode' : 'Dark Mode'}
-          </Text>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <div className='group relative'>
+      <Button
+        className='WS relative'
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        variant='secondary'
+        size='icon'
+      >
+        <MoonIcon
+          className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
+          ${darkModeClass}`}
+        />
+        <SunIcon
+          className={`absolute h-[1.2rem] w-[1.2rem] transition-all duration-500
+          ${lightModeClass}`}
+        />
+      </Button>
+
+      <Card className='px-[6px]  py-[2px] absolute bottom-3 transition-all  ease-in duration-200 opacity-0 group-hover:opacity-100 right-10 group-hover:scale-100 scale-50'>
+        <Text variant='badge' className='  text-nowrap  '>
+          {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+        </Text>
+      </Card>
+    </div>
   );
 };
 export default ThemeToggle;
