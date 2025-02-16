@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import RedditIcon from '../icons/RedditIcon';
 import GithubIcon from '../icons/GithubIcon';
 import LinkedinIcon from '../icons/LinkedinIcon';
+import TextReveal from './TextPrompt';
 
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -44,7 +45,7 @@ const StickyHeader: React.FC = () => {
           />
         </div>
 
-        <div className='flex mt-4 items-center justify-center'>
+        <div className='flex  items-center justify-center'>
           <div>
             <Heading variant='h5' className='text-center font-bold'>
               Halil İbrahim Celik
@@ -88,6 +89,9 @@ const StickyHeader: React.FC = () => {
               </Button>
             </div>
           </div>
+        </div>
+        <div className=''>
+          <TextReveal />
         </div>
       </Card>
     </aside>
