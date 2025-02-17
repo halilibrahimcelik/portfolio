@@ -21,7 +21,11 @@ const BgIcon: React.FC<BgIconProps> = ({
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const stars = useMemo(() => generateRandomStars(100, 200, 200, 0.3, 1.2), []);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setMounted(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (theme === 'dark') {

@@ -35,8 +35,8 @@ const StickyHeader: React.FC = () => {
       <Card className={`relative shadow-lg min-h-60 `}>
         <div className='shadow-xl rounded-xl flex mx-auto w-fit relative mt-[-60px] overflow-hidden'>
           <Image
+            priority
             className='object-cover aspect-square'
-            loading='lazy'
             about='Halil Ibrahim'
             width={200}
             height={200}
