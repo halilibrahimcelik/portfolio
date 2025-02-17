@@ -6,7 +6,7 @@ export interface HeadingProps {
   className?: string;
 }
 export interface SmallTextProps {
-  variant?: 'default' | 'small' | 'xs';
+  variant?: 'default' | 'small' | 'xs' | 'badge';
   children: ReactNode;
   className?: string;
   icon?: ReactNode; // Optional icon
