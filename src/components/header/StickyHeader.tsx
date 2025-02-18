@@ -9,7 +9,7 @@ import RedditIcon from '../icons/RedditIcon';
 import GithubIcon from '../icons/GithubIcon';
 import LinkedinIcon from '../icons/LinkedinIcon';
 import TextReveal from './TextPrompt';
-import { MailIcon } from 'lucide-react';
+import { MailIcon, MapPinHouse } from 'lucide-react';
 import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
 
@@ -128,6 +128,17 @@ const StickyHeader: React.FC = () => {
           </button>
 
           <hr className='my-2' />
+          <div className='flex items-center gap-2 p-1'>
+            <MapPinHouse size={24} />
+
+            <span className='text-xs text-center'>London, UK</span>
+          </div>
+          <hr className='my-2' />
+          <div>
+            <Button className='w-full text-center' variant={'default'}>
+              Contact Me !
+            </Button>
+          </div>
         </div>
       </Card>
     </aside>
