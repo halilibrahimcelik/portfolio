@@ -9,6 +9,9 @@ import RedditIcon from '../icons/RedditIcon';
 import GithubIcon from '../icons/GithubIcon';
 import LinkedinIcon from '../icons/LinkedinIcon';
 import TextReveal from './TextPrompt';
+import { MailIcon } from 'lucide-react';
+import { SocialMedia } from '@/types';
+import { toast } from 'sonner';
 
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -25,7 +28,27 @@ const StickyHeader: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(SocialMedia.EMAIL);
 
+    toast.success('Email copied to clipboard', {
+      position: 'bottom-center',
+      cancel: (
+        <Button
+          onClick={() => toast.dismiss()}
+          className='absolute bottom-1 right-1'
+          size={'sm'}
+          variant={'ghost'}
+        >
+          Dismiss
+        </Button>
+      ),
+
+      icon: '📋',
+
+      richColors: true,
+    });
+  };
   return (
     <aside
       className={`transition-all h-fit  duration-300 w-64  ${
@@ -56,7 +79,7 @@ const StickyHeader: React.FC = () => {
                   aria-label='Github'
                   about='Github'
                   title='Github'
-                  href={'https://github.com/halilibrahimcelik/'}
+                  href={SocialMedia.GITHUB}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -68,7 +91,7 @@ const StickyHeader: React.FC = () => {
                   aria-label='Linkedin'
                   about='Linkedin'
                   title='Linkedin'
-                  href={'https://www.linkedin.com/in/halil-ibrahim-celik/'}
+                  href={SocialMedia.LINKEDIN}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -80,7 +103,7 @@ const StickyHeader: React.FC = () => {
                   aria-label='Reddit'
                   about='Reddit'
                   title='Reddit'
-                  href={'https://www.reddit.com/user/vaydaglar/'}
+                  href={SocialMedia.REDDIT}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -90,8 +113,21 @@ const StickyHeader: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className=''>
+        <div>
           <TextReveal />
+        </div>
+        <div className='bg-secondary py-3 px-2 text-secondary-foreground shadow-sm rounded-xl '>
+          <button
+            onClick={handleCopyEmail}
+            title='Copy Email'
+            className='text-xs flex items-center gap-2 p-1 rounded-xl  hover:bg-background  dark:hover:bg-foreground hover:text-primary-foreground'
+          >
+            {' '}
+            <MailIcon size={24} />
+            <span>{SocialMedia.EMAIL}</span>
+          </button>
+
+          <hr className='my-2' />
         </div>
       </Card>
     </aside>
