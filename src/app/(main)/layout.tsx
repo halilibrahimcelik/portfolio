@@ -13,7 +13,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           <ThemeToggle />
         </div>
       </div>
-      <div className='flex gap-4  mt-20 relative min-h-[140vh]'>
+      <div className='flex flex-col lg:flex-row gap-4  mt-20 relative min-h-[140vh]'>
         <StickyHeader />
         <Card asChild className='flex-grow '>
           <main>{children}</main>
