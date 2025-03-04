@@ -33,18 +33,10 @@ const StickyHeader: React.FC = () => {
 
     toast.success('Email copied to clipboard', {
       position: 'bottom-center',
-      cancel: (
-        <Button
-          onClick={() => toast.dismiss()}
-          className='absolute bottom-1 right-1'
-          size={'sm'}
-          variant={'ghost'}
-        >
-          Dismiss
-        </Button>
-      ),
-
-      icon: '📋',
+      closeButton: true,
+      style: {
+        whiteSpace: 'nowrap',
+      },
 
       richColors: true,
     });

@@ -38,10 +38,10 @@ export default function RootLayout({
             <BgIcon />
           </div>
           <Toaster
-            className='![--width:270px] '
+            className='![--width:250px]  '
             position='bottom-center'
             visibleToasts={2}
-            duration={3000000}
+            duration={1500}
           />
         </ThemeProvider>
       </body>
