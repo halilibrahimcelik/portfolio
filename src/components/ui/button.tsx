@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn, createRipple } from '@/lib/utils';
+import ClickSpark from '../ClickSpark/ClickSpark';
 
 const buttonVariants = cva(
   'inline-flex items-center transition-all ease-in justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden',
@@ -51,12 +52,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-        onClick={handleClick}
-      />
+      <ClickSpark sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          {...props}
+          onClick={handleClick}
+        />
+      </ClickSpark>
     );
   }
 );
