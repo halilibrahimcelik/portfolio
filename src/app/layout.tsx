@@ -3,6 +3,7 @@ import { Work_Sans, Open_Sans } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import BgIcon from '@/components/icons/BgIcon';
+import { Toaster } from '@/components/ui/sonner';
 
 const workSans = Work_Sans({
   variable: '--font-work-sans',
@@ -36,6 +37,12 @@ export default function RootLayout({
 
             <BgIcon />
           </div>
+          <Toaster
+            className='![--width:250px]  '
+            position='bottom-center'
+            visibleToasts={2}
+            duration={1500}
+          />
         </ThemeProvider>
       </body>
     </html>
