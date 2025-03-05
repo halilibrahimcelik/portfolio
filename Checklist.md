@@ -45,9 +45,9 @@ Here’s a checklist of all the features and tasks I need to complete for this p
   - [x] Choose a font family (e.g., Inter, Roboto, or custom Google Fonts).
   - [x] Define font sizes for headings, subheadings, and body text.
 
-- [ ] **UI Components**
+- [x] **UI Components**
 
-  - [ ] Design reusable components using shadcn/ui:
+  - [x] Design reusable components using shadcn/ui:
     - Buttons
     - Cards (for projects)
     - Forms (for contact page)
