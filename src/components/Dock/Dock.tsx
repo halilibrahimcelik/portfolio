@@ -19,6 +19,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { usePathname } from 'next/navigation';
 
 export type DockItemData = {
   icon: React.ReactNode;
@@ -64,6 +65,9 @@ function DockItem({
 }: DockItemProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   const ishovered = useMotionValue(0);
+  const pathname = usePathname();
+
+  const isActive = pathname === href;
 
   const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
@@ -93,7 +97,11 @@ function DockItem({
       onFocus={() => ishovered.set(1)}
       onBlur={() => ishovered.set(0)}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full dark:bg-secondary bg-primary  border-neutral-400 border-2 shadow-md ${className}`}
+      className={`relative inline-flex items-center justify-center rounded-full dark:bg-secondary bg-primary border-neutral-400 border-2 shadow-md ${
+        isActive
+          ? 'border-blue-500 dark:border-blue-400 ring-2 ring-blue-300 dark:ring-blue-600'
+          : ''
+      } ${className}`}
       tabIndex={0}
     >
       {Children.map(children, (child) =>
