@@ -107,9 +107,13 @@ Here’s a checklist of all the features and tasks I need to complete for this p
   - [ ] Create API routes in Next.js for fetching projects and submitting contact forms.
   - [ ] Secure API routes if necessary.
 
-- [ ] **CMS Integration (Optional)**
-  - [ ] Decide whether to use a CMS (e.g., Sanity, Contentful, or Strapi).
+- [x] **CMS Integration (Optional)**
+
+  - [x] Decide whether to use a CMS ( Contentful).
   - [ ] Integrate CMS for managing blog posts or projects (if needed).
+
+- [x] **Integrate CRUD functionality for contents(Optional)**
+  - [x] Allow admin to edit content inside of page.
 
 ---
 
