@@ -1,5 +1,5 @@
 import Dock from '@/components/Dock/Dock';
-import StickyHeader from '@/components/header/StickyHeader';
+import StickyHeader from '@/components/Header/StickyHeader';
 import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Card } from '@/components/ui/card';

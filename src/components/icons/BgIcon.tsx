@@ -68,7 +68,9 @@ const BgIcon: React.FC<BgIconProps> = ({
             width='2000'
             height='2000'
             fill={bgClr}
-            style={{ transition: 'fill 0.3s ease-in' }}
+            style={{
+              transition: 'fill 0.3s ease-in',
+            }}
           />
           {/* Grid pattern */}
           <pattern

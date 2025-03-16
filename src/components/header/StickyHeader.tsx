@@ -8,10 +8,10 @@ import { Button } from '../ui/button';
 import RedditIcon from '../icons/RedditIcon';
 import GithubIcon from '../icons/GithubIcon';
 import LinkedinIcon from '../icons/LinkedinIcon';
-import TextReveal from './TextPrompt';
 import { DownloadIcon, MailIcon, MapPinHouse } from 'lucide-react';
 import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
+import TextReveal from './TextPrompt';
 
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
