@@ -35,7 +35,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className='flex flex-col lg:flex-row gap-4  mt-20 relative min-h-[140vh]'>
         <StickyHeader />
-        <Card asChild className='flex-grow '>
+        <Card asChild className='flex-grow px-4 py-8'>
           <main>{children}</main>
         </Card>
         <Dock items={items} />
