@@ -14,7 +14,15 @@ const headingStyles = {
 export function Heading({ variant, children, className }: HeadingProps) {
   const Tag = variant;
   return (
-    <Tag className={cn(headingStyles[variant], className)}>{children}</Tag>
+    <Tag
+      className={
+        cn(headingStyles[variant], className) +
+        ' ' +
+        ' text-neutral-800 dark:text-neutral-300'
+      }
+    >
+      {children}
+    </Tag>
   );
 }
 
@@ -32,8 +40,14 @@ export function Text({
   icon,
 }: SmallTextProps) {
   return (
-    <p className={cn(smallTextStyles[variant], className)}>
-      {icon && <span className='mr-2'>{icon}</span>}
+    <p
+      className={
+        cn(smallTextStyles[variant], className) +
+        ' ' +
+        ' text-neutral-800 dark:text-neutral-300'
+      }
+    >
+      {icon && <span className='mr-2 '>{icon}</span>}
       {children}
     </p>
   );
