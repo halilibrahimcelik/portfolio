@@ -20,6 +20,7 @@ export const FETCH_TECH_STACKS = gql`
     stacksCollection {
       items {
         label
+        stackUrl
         image {
           url
         }
@@ -38,6 +39,7 @@ export interface Project {
 
 export interface TechStack {
   label: string;
+  stackUrl: string;
   image: {
     url: string;
   };

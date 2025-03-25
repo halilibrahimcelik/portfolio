@@ -14,7 +14,7 @@ interface TickerCarouselProps {
 const TickerCarousel = ({
   items,
   direction = 'left',
-  speed = 30,
+  speed = 190,
   className,
 }: TickerCarouselProps) => {
   const baseX = direction === 'right' ? '-100%' : '0%';
@@ -41,7 +41,7 @@ const TickerCarousel = ({
   });
 
   // Double the items to create a seamless loop
-  const tickerItems = [...items, ...items];
+  const tickerItems = [...items, ...items, ...items];
 
   return (
     <div className={cn('overflow-hidden relative', className)}>
@@ -54,7 +54,7 @@ const TickerCarousel = ({
           <AnimatedCard
             circleSize={400}
             key={`${item}-${idx}`}
-            className='inline-block px-4 py-2 text-nowrap text-neutral-800 dark:text-neutral-300'
+            className='inline-block px-4 py-2 text-nowrap w-32 text-neutral-800 dark:text-neutral-300'
           >
             {item}
           </AnimatedCard>

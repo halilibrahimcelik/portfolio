@@ -14,14 +14,12 @@ export const metadata: Metadata = {
 const HomePage: NextPage = async () => {
   const { data } = await client.query<StacksCollection>({
     query: FETCH_TECH_STACKS,
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'no-cache',
   });
   const technologies = data?.stacksCollection.items.map((stack) => (
-    <TickerItem
-      key={stack.label}
-      title={stack.label}
-      imgUrl={stack.image.url}
-    />
+    <a href={stack.stackUrl} target='_blank' key={stack.label}>
+      <TickerItem title={stack.label} imgUrl={stack.image.url} />{' '}
+    </a>
   ));
 
   return (
@@ -73,11 +71,11 @@ const HomePage: NextPage = async () => {
           />
         </div>
       </div>
-      <div className='my-8 py-6 bg-gradient-to-r from-slate-900 to-slate-800 rounded-lg'>
+      <div className='my-8 py-6 bg-gradient-to-r  rounded-lg'>
         <Heading variant='h3' className='text-center mb-4'>
           Technologies I Work With
         </Heading>
-        <TickerCarousel items={technologies} speed={40} className='py-2' />
+        <TickerCarousel items={technologies} speed={60} className='py-2' />
       </div>
     </main>
   );

@@ -17,7 +17,7 @@ const AnimatedCard = ({
   return (
     <div
       className={
-        'group relative transform-gpu overflow-hidden rounded-[20px] bg-white/10 p-2 transition-transform hover:scale-[1.01] active:scale-90' +
+        'group relative border dark:border-none  transform-gpu overflow-hidden rounded-[20px] bg-white/10 p-2 transition-transform hover:scale-[1.01] active:scale-90' +
         ' ' +
         className
       }
