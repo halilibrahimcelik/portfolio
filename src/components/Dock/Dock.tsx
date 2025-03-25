@@ -99,10 +99,10 @@ function DockItem({
       onFocus={() => ishovered.set(1)}
       onBlur={() => ishovered.set(0)}
       onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full dark:bg-secondary bg-primary  border-2 shadow-md ${
+      className={`relative inline-flex items-center justify-center rounded-full dark:bg-secondary bg-primary shadow-md ${
         isActive
-          ? 'border-[#a8b3cf] dark:border-blue-400 ring-2 ring-blue-300 dark:ring-blue-600'
-          : ''
+          ? 'gradient-border-pseudo ring-2 ring-blue-300 dark:ring-blue-600'
+          : 'border-2'
       } ${className}`}
       tabIndex={0}
     >
