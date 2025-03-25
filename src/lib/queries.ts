@@ -14,6 +14,19 @@ export const FETCH_PROJETS_LIST = gql`
     }
   }
 `;
+
+export const FETCH_TECH_STACKS = gql`
+  query getTechStack {
+    stacksCollection {
+      items {
+        label
+        image {
+          url
+        }
+      }
+    }
+  }
+`;
 export interface Project {
   title: string;
   description: string;
@@ -23,6 +36,17 @@ export interface Project {
   };
 }
 
+export interface TechStack {
+  label: string;
+  image: {
+    url: string;
+  };
+}
+export interface StacksCollection {
+  stacksCollection: {
+    items: TechStack[];
+  };
+}
 export interface ProjectsCollection {
   projectsCollection: {
     items: Project[];

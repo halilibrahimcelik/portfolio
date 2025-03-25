@@ -2,6 +2,8 @@ import MainMenusCard from '@/components/MainMenusCard/MainMenusCard';
 import { Heading, Text } from '@/components/theme/typography';
 import TickerCarousel from '@/components/Ticker/Ticker';
 import TickerItem from '@/components/Ticker/TickerItem';
+import client from '@/lib/apolloClient';
+import { FETCH_TECH_STACKS, StacksCollection } from '@/lib/queries';
 import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 
@@ -10,9 +12,17 @@ export const metadata: Metadata = {
   description: 'This is my personal website.',
 };
 const HomePage: NextPage = async () => {
-  const technologies = [
-    <TickerItem key='React.js' imgUrl='/vercel.svg' title='React.js' />,
-  ];
+  const { data } = await client.query<StacksCollection>({
+    query: FETCH_TECH_STACKS,
+    fetchPolicy: 'cache-first',
+  });
+  const technologies = data?.stacksCollection.items.map((stack) => (
+    <TickerItem
+      key={stack.label}
+      title={stack.label}
+      imgUrl={stack.image.url}
+    />
+  ));
 
   return (
     <main>
