@@ -1,0 +1,94 @@
+import client from '@/lib/apolloClient';
+import {
+  FETCH_PROJETS_LIST,
+  FETCH_SINGLE_PROJECT,
+  Project,
+} from '@/lib/queries';
+import { slugify } from '@/lib/utils';
+import { NextPage } from 'next';
+import { redirect, notFound } from 'next/navigation';
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+// This function checks if the provided slug is an ID
+function isProjectId(slug: string): boolean {
+  return /^[a-zA-Z0-9]{16,}$/.test(slug);
+}
+
+const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
+  const { slug } = await params;
+  console.log('Current slug:', slug);
+
+  let project: Project | null = null;
+  let projectId: string = slug;
+
+  // If this is a title-based slug, we need to find the corresponding ID
+  if (!isProjectId(slug)) {
+    // Try to fetch from cache first
+    try {
+      const { data: allProjectsData } = await client.query({
+        query: FETCH_PROJETS_LIST,
+        fetchPolicy: 'cache-only',
+      });
+
+      // Find the project with the matching slug
+      const matchingProject = allProjectsData.projectsCollection.items.find(
+        (p: Project) => slugify(p.title) === slug
+      );
+
+      if (matchingProject) {
+        projectId = matchingProject.sys.id;
+      }
+    } catch {
+      // If cache-only fails, make a network request
+      const { data: allProjectsData } = await client.query({
+        query: FETCH_PROJETS_LIST,
+        fetchPolicy: 'network-only', // Fallback to network
+      });
+
+      // Find the project with the matching slug
+      const matchingProject = allProjectsData.projectsCollection.items.find(
+        (p: Project) => slugify(p.title) === slug
+      );
+
+      if (matchingProject) {
+        projectId = matchingProject.sys.id;
+      } else {
+        return notFound();
+      }
+    }
+  }
+
+  // Now fetch the project using the correct ID
+  const { data } = await client.query<{ projects: Project }>({
+    query: FETCH_SINGLE_PROJECT,
+    variables: { id: projectId },
+    fetchPolicy: 'cache-first',
+  });
+
+  project = data.projects;
+
+  if (!project) {
+    return notFound();
+  }
+
+  // Generate the canonical slug for this project
+  const canonicalSlug = slugify(project.title);
+
+  // If we're on an ID URL, redirect to the canonical slug URL
+  if (isProjectId(slug) && slug !== canonicalSlug) {
+    redirect(`/projects/${canonicalSlug}`);
+  }
+
+  return (
+    <div>
+      <h1>{project.title}</h1>
+      <p>{project.description}</p>
+      {/* Display other project details */}
+    </div>
+  );
+};
+
+export default ProjectDetailsPage;

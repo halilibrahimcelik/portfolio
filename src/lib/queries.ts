@@ -4,6 +4,10 @@ export const FETCH_PROJETS_LIST = gql`
   query FetchList {
     projectsCollection {
       items {
+        sys {
+          id
+        }
+
         image {
           url
           title
@@ -28,8 +32,26 @@ export const FETCH_TECH_STACKS = gql`
     }
   }
 `;
+export const FETCH_SINGLE_PROJECT = gql`
+  query FetchProject($id: String!) {
+    projects(id: $id) {
+      title
+      sys {
+        id
+      }
+      description
+      image {
+        url
+        title
+      }
+    }
+  }
+`;
 export interface Project {
   title: string;
+  sys: {
+    id: string;
+  };
   description: string;
   image: {
     url: string;
