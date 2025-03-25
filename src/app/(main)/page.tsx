@@ -23,24 +23,26 @@ const HomePage: NextPage = async () => {
   ));
 
   return (
-    <main>
-      <Heading variant='h2'>A Bit About Me</Heading>
-      <hr className='mt-1 mb-4' />
-      <div className='flex flex-col gap-2'>
-        <Text>
-          Hi there! I&apos;m Halil Ibrahim Celik, a passionate and
-          detail-oriented Frontend Developer based in London, UK. With a strong
-          foundation in{' '}
-          <strong>Next.js, React.js, JavaScript, and TypeScript.</strong> I
-          thrive on building dynamic, user-friendly web applications that
-          deliver seamless experiences.
-        </Text>
-        <Text>
-          When I&apos;m not coding, you&apos;ll find me exploring the latest
-          tech trends, tinkering with new libraries, or brainstorming ideas for
-          my next project. I&apos;m excited to connect, collaborate, and create
-          something amazing together!
-        </Text>
+    <>
+      <div>
+        <Heading variant='h2'>A Bit About Me</Heading>
+        <hr className='mt-1 mb-4' />
+        <div className='flex flex-col gap-2'>
+          <Text>
+            Hi there! I&apos;m Halil Ibrahim Celik, a passionate and
+            detail-oriented Frontend Developer based in London, UK. With a
+            strong foundation in{' '}
+            <strong>Next.js, React.js, JavaScript, and TypeScript.</strong> I
+            thrive on building dynamic, user-friendly web applications that
+            deliver seamless experiences.
+          </Text>
+          <Text>
+            When I&apos;m not coding, you&apos;ll find me exploring the latest
+            tech trends, tinkering with new libraries, or brainstorming ideas
+            for my next project. I&apos;m excited to connect, collaborate, and
+            create something amazing together!
+          </Text>
+        </div>
       </div>
       <div className='mt-8'>
         <Heading variant='h2'>What Do I do</Heading>
@@ -71,13 +73,12 @@ const HomePage: NextPage = async () => {
           />
         </div>
       </div>
-      <div className='my-8 py-6 bg-gradient-to-r  rounded-lg'>
-        <Heading variant='h3' className='text-center mb-4'>
-          Technologies I Work With
-        </Heading>
+      <div className='my-8 px-2'>
+        <Heading variant='h2'>Technologies I Work With</Heading>
+        <hr className='mt-1 mb-4' />
         <TickerCarousel items={technologies} speed={60} className='py-2' />
       </div>
-    </main>
+    </>
   );
 };
 export default HomePage;
