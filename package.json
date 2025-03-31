@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.3",
+    "@contentful/rich-text-from-markdown": "^16.0.0",
     "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.8",
     "class-variance-authority": "^0.7.1",

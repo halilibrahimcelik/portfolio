@@ -1,3 +1,6 @@
+import ProjectDetail from '@/components/ProjectDetail/ProjectDetail';
+import { Heading } from '@/components/theme/typography';
+import GoBackButton from '@/components/ui/GoBackButton';
 import client from '@/lib/apolloClient';
 import {
   FETCH_PROJETS_LIST,
@@ -83,9 +86,15 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
 
   return (
     <div>
-      <h1>{project.title}</h1>
-      <p>{project.description}</p>
-      {/* Display other project details */}
+      <div className='flex w-full justify-between items-center'>
+        <Heading className='flex-1' variant='h2'>
+          {project.title}
+        </Heading>
+
+        <GoBackButton url='/projects' />
+      </div>
+      <hr className='my-4' />
+      <ProjectDetail project={project} />
     </div>
   );
 };
