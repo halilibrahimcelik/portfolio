@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Welcome to my projects page.',
 };
 const ProjectsPage: NextPage = async () => {
-  const { data, loading } = await client.query<ProjectsCollection>({
+  const { data } = await client.query<ProjectsCollection>({
     query: FETCH_PROJETS_LIST,
     fetchPolicy: 'cache-first',
   });

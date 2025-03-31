@@ -19,7 +19,6 @@ function isProjectId(slug: string): boolean {
 
 const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   const { slug } = await params;
-  console.log('Current slug:', slug);
 
   let project: Project | null = null;
   let projectId: string = slug;

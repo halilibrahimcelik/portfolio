@@ -14,6 +14,7 @@ export const FETCH_PROJETS_LIST = gql`
         }
         description
         title
+        websiteUrl
       }
     }
   }
