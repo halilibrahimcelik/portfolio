@@ -156,7 +156,7 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   return (
     <div>
       <div className='flex w-full justify-between items-center'>
-        <Heading className='flex-1' variant='h2'>
+        <Heading className='flex-1 ' variant='h2'>
           {project.title}
         </Heading>
 

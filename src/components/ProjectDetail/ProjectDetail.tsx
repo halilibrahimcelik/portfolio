@@ -1,5 +1,5 @@
 import { Project } from '@/lib/queries';
-import { BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { Block, Inline } from '@contentful/rich-text-types';
 
 import { richTextFromMarkdown } from '@contentful/rich-text-from-markdown';
@@ -7,13 +7,14 @@ import {
   documentToReactComponents,
   Options,
 } from '@contentful/rich-text-react-renderer';
+import CopyButton from '../ui/CopyButton';
 
 type Props = {
   project: Project;
 };
 const ProjectDetail: React.FC<Props> = async ({ project }) => {
   const content = await richTextFromMarkdown(project.description);
-
+  console.log(project.description);
   const options: Options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => (
@@ -31,6 +32,7 @@ const ProjectDetail: React.FC<Props> = async ({ project }) => {
       [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => (
         <ol className='list-decimal pl-6 mb-4'>{children}</ol>
       ),
+
       [BLOCKS.LIST_ITEM]: (node: Block | Inline, children: React.ReactNode) => (
         <li className='mb-1'>{children}</li>
       ),
@@ -47,6 +49,35 @@ const ProjectDetail: React.FC<Props> = async ({ project }) => {
           {children}
         </a>
       ),
+      [INLINES.EMBEDDED_ENTRY]: (
+        node: Block | Inline,
+        children: React.ReactNode
+      ) => {
+        // Handle embedded entries here if needed
+        return <span>{children}</span>;
+      },
+      [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => {
+        // Sometimes code blocks are converted to blockquotes during markdown conversion
+        console.log('Quote block:', node);
+        return (
+          <blockquote className='border-l-4 border-gray-300 pl-4 italic my-4'>
+            {children}
+          </blockquote>
+        );
+      },
+    },
+    renderMark: {
+      [MARKS.CODE]: (text) => {
+        // This handles inline code (`code`)
+
+        return (
+          <CopyButton
+            buttonClass='bg-gray-800 flex cursor-pointer w-full text-gray-100 p-4 relative group rounded-md overflow-x-auto mb-4'
+            textClass='text-sm'
+            text={` ${text}`}
+          />
+        );
+      },
     },
   };
 
