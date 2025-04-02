@@ -1,7 +1,7 @@
 'use client';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { useMouse } from '../hooks/usemouse';
+import { useMouse } from '../../hooks/usemouse';
 
 const AnimatedCard = ({
   className,

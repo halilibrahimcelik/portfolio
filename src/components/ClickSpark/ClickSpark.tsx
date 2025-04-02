@@ -1,3 +1,4 @@
+'use client';
 import { useTheme } from 'next-themes';
 import React, { useRef, useEffect, useCallback } from 'react';
 
@@ -167,7 +168,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   };
 
   return (
-    <div className='relative w-full h-full' onClick={handleClick}>
+    <div className='relative ' onClick={handleClick}>
       <canvas
         ref={canvasRef}
         className='absolute inset-0 pointer-events-none'

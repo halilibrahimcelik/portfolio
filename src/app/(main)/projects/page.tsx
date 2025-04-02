@@ -1,8 +1,8 @@
+import Projects from '@/components/Projects/Projects';
 import { Heading, Text } from '@/components/theme/typography';
 import client from '@/lib/apolloClient';
 import { FETCH_PROJETS_LIST, ProjectsCollection } from '@/lib/queries';
 import { Metadata, NextPage } from 'next';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Halil | Frontend Developer',
@@ -16,24 +16,11 @@ const ProjectsPage: NextPage = async () => {
 
   return (
     <main>
-      <Heading variant='h1'>Hello, World!</Heading>
-      <Text>This is my projects page.</Text>
+      <Heading variant='h2'>My Projects</Heading>
+      <hr className='mt-1 mb-4' />
       <Text>Here you can find my recent work and ongoing projects.</Text>
       <Text>Stay tuned for updates!</Text>
-      <ul>
-        {data?.projectsCollection.items.map((project) => (
-          <li key={project.title}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <Image
-              src={project.image.url}
-              alt={project.image.title}
-              width={300}
-              height={200}
-            />
-          </li>
-        ))}
-      </ul>
+      <Projects projects={data.projectsCollection.items} />
     </main>
   );
 };
