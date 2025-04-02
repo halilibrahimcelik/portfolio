@@ -22,9 +22,7 @@ const Contact: React.FC = () => {
         message: 'Name must be at least 2 characters long',
       })
       .max(100),
-    email: z.string().email({
-      message: 'Invalid email address',
-    }),
+    email: z.string(),
     message: z
       .string()
       .min(1, {
@@ -36,12 +34,32 @@ const Contact: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      email: '',
+      email: 'sss',
       message: '',
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: values.email,
+          message: values.message,
+          name: values.name,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data.message);
+      form.reset();
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <Card>
@@ -68,7 +86,7 @@ const Contact: React.FC = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type='email' {...field} />
+                  <Input type='text' {...field} />
                 </FormControl>
 
                 <FormMessage />
