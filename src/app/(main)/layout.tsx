@@ -20,7 +20,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     },
     {
       icon: <UserIcon size={18} />,
-      label: 'Contact Us',
+      label: 'Contact Me',
       href: '/contact-me',
     },
   ];
