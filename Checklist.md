@@ -45,9 +45,9 @@ Here’s a checklist of all the features and tasks I need to complete for this p
   - [x] Choose a font family (e.g., Inter, Roboto, or custom Google Fonts).
   - [x] Define font sizes for headings, subheadings, and body text.
 
-- [ ] **UI Components**
+- [x] **UI Components**
 
-  - [ ] Design reusable components using shadcn/ui:
+  - [x] Design reusable components using shadcn/ui:
     - Buttons
     - Cards (for projects)
     - Forms (for contact page)
@@ -107,9 +107,13 @@ Here’s a checklist of all the features and tasks I need to complete for this p
   - [ ] Create API routes in Next.js for fetching projects and submitting contact forms.
   - [ ] Secure API routes if necessary.
 
-- [ ] **CMS Integration (Optional)**
-  - [ ] Decide whether to use a CMS (e.g., Sanity, Contentful, or Strapi).
+- [x] **CMS Integration (Optional)**
+
+  - [x] Decide whether to use a CMS ( Contentful).
   - [ ] Integrate CMS for managing blog posts or projects (if needed).
+
+- [x] **Integrate CRUD functionality for contents(Optional)**
+  - [x] Allow admin to edit content inside of page.
 
 ---
 
