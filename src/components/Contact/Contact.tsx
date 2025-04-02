@@ -14,6 +14,8 @@ import { z } from 'zod';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { Card } from '../ui/card';
+import { LoaderCircle } from 'lucide-react';
+import { toast } from 'sonner';
 const Contact: React.FC = () => {
   const formSchema = z.object({
     name: z
@@ -22,7 +24,9 @@ const Contact: React.FC = () => {
         message: 'Name must be at least 2 characters long',
       })
       .max(100),
-    email: z.string(),
+    email: z.string().email({
+      message: 'Invalid email address',
+    }),
     message: z
       .string()
       .min(1, {
@@ -34,7 +38,7 @@ const Contact: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      email: 'sss',
+      email: '',
       message: '',
     },
   });
@@ -55,12 +59,29 @@ const Contact: React.FC = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      console.log(data.message);
+      toast.success(data.message, {
+        position: 'bottom-center',
+        closeButton: true,
+        style: {
+          whiteSpace: 'nowrap',
+        },
+
+        richColors: true,
+      });
       form.reset();
     } catch (error) {
       console.error(error);
+      toast.error('An error occurred while sending the email.', {
+        position: 'bottom-center',
+        closeButton: true,
+        style: {
+          whiteSpace: 'nowrap',
+        },
+        richColors: true,
+      });
     }
   }
+
   return (
     <Card>
       <Form {...form}>
@@ -107,7 +128,13 @@ const Contact: React.FC = () => {
               </FormItem>
             )}
           />
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>
+            {form.formState.isSubmitting ? (
+              <LoaderCircle className='animate-spin' />
+            ) : (
+              'Send'
+            )}
+          </Button>
         </form>
       </Form>
     </Card>
