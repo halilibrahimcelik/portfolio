@@ -14,7 +14,6 @@ type Props = {
 };
 const ProjectDetail: React.FC<Props> = async ({ project }) => {
   const content = await richTextFromMarkdown(project.description);
-  console.log(project.description);
   const options: Options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => (
