@@ -17,7 +17,12 @@ const ContactUsPage: NextPage = () => {
         style={{
           overflow: 'hidden',
           position: 'absolute',
-          opacity: 0.6,
+          opacity: 0.5,
+
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
           // minHeight: '100px',
           // zIndex: 1,
           // maxHeight: '200px',
@@ -30,7 +35,7 @@ const ContactUsPage: NextPage = () => {
           gravity={0.7}
           friction={0.8}
           wallBounce={1}
-          followCursor={true}
+          followCursor={false}
         />
       </div>
       <Contact />

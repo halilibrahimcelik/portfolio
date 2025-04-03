@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
 
   return (
     <div className='relative z-1'>
-      <Card className='my-8'>
+      <Card className='my-8 bg-transparent'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-3'>
             <FormField
