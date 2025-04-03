@@ -68,8 +68,15 @@ function DockItem({
   const ref = useRef<HTMLAnchorElement>(null);
   const ishovered = useMotionValue(0);
   const pathname = usePathname();
+  const allPaths = pathname.split('/');
 
-  const isActive = pathname === href;
+  const isActive = allPaths.some(() => {
+    if (allPaths.length > 2) {
+      return href.includes(allPaths[1]);
+    } else {
+      return pathname === href;
+    }
+  });
 
   const mouseDistance = useTransform(mouseX, (val) => {
     const rect = ref.current?.getBoundingClientRect() ?? {

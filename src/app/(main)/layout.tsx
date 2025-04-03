@@ -4,7 +4,7 @@ import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Card } from '@/components/ui/card';
 import Container from '@/components/ui/Container';
-import { HomeIcon, ProjectorIcon, UserIcon } from 'lucide-react';
+import { GalleryVerticalEnd, HomeIcon, UserIcon } from 'lucide-react';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const items = [
@@ -14,7 +14,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       href: '/',
     },
     {
-      icon: <ProjectorIcon size={18} />,
+      icon: <GalleryVerticalEnd size={18} />,
       label: 'Projects',
       href: '/projects',
     },

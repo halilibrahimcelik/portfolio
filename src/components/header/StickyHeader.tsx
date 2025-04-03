@@ -131,8 +131,12 @@ const StickyHeader: React.FC = () => {
             </div>
             <hr className='my-2' />
             <div className='flex flex-col gap-4'>
-              <Button className='w-full text-center' variant={'default'}>
-                Contact Me !
+              <Button
+                asChild
+                className='w-full text-center'
+                variant={'default'}
+              >
+                <Link href={'contact-me'}>Contact Me !</Link>
               </Button>
               <Button
                 asChild

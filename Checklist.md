@@ -72,25 +72,25 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 #### **3. Projects Page**
 
-- [ ] Create a projects page with a list of my projects.
-- [ ] Add thumbnails and short descriptions for each project.
-- [ ] Ensure each project links to a dedicated page with detailed information.
+- [x] Create a projects page with a list of my projects.
+- [x] Add thumbnails and short descriptions for each project.
+- [x] Ensure each project links to a dedicated page with detailed information.
 - [ ] Use Framer Motion for smooth page transitions.
 
 ---
 
 #### **4. Contact Page**
 
-- [ ] Add a contact form using React Hook Form.
-- [ ] Include links to my email and social media profiles.
-- [ ] Style the contact page using shadcn/ui components.
+- [x] Add a contact form using React Hook Form.
+- [x] Include links to my email and social media profiles.
+- [x] Style the contact page using shadcn/ui components.
 
 ---
 
 #### **5. Sticky Social Links Header**
 
-- [ ] Add a sticky header on the left side for all pages except the homepage.
-- [ ] Include icons/links to my social media profiles (e.g., GitHub, LinkedIn, Twitter).
+- [x] Add a sticky header on the left side for all pages except the homepage.
+- [x] Include icons/links to my social media profiles (e.g., GitHub, LinkedIn, Twitter).
 
 ---
 
@@ -104,13 +104,13 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 - [ ] **API Endpoints**
 
-  - [ ] Create API routes in Next.js for fetching projects and submitting contact forms.
-  - [ ] Secure API routes if necessary.
+  - [x] Create API routes in Next.js for fetching projects and submitting contact forms.
+  - [x] Secure API routes if necessary.
 
 - [x] **CMS Integration (Optional)**
 
   - [x] Decide whether to use a CMS ( Contentful).
-  - [ ] Integrate CMS for managing blog posts or projects (if needed).
+  - [x] Integrate CMS for managing blog posts or projects (if needed).
 
 - [x] **Integrate CRUD functionality for contents(Optional)**
   - [x] Allow admin to edit content inside of page.

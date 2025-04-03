@@ -23,17 +23,15 @@ const ContactUsPage: NextPage = () => {
           left: '0',
           right: '0',
           bottom: '0',
-          // minHeight: '100px',
-          // zIndex: 1,
-          // maxHeight: '200px',
+
           width: '100%',
         }}
       >
         <Ballpit
           colors={['#FF5733', '#33FF57', '#3357FF', '#F1C40F']}
-          count={20}
+          count={30}
           gravity={0.7}
-          friction={0.8}
+          friction={0.95}
           wallBounce={1}
           followCursor={false}
         />
