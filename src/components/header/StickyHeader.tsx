@@ -13,7 +13,14 @@ import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
 import TextReveal from './TextPrompt';
 import { motion } from 'framer-motion';
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
 
@@ -139,16 +146,30 @@ const StickyHeader: React.FC = () => {
               >
                 <Link href={'contact-me'}>Contact Me !</Link>
               </Button>
-              <Button
-                asChild
-                className='w-full text-center'
-                variant={'default'}
-              >
-                <a href='/cv.pdf' download target='_blank'>
-                  <DownloadIcon size={24} />
-                  Download CV
-                </a>
-              </Button>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className='w-full text-center' variant={'default'}>
+                    {/* <a href='/cv.pdf' download target='_blank'> */}
+                    <DownloadIcon size={24} />
+                    Download CV
+                    {/* </a> */}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle className='text-center mb-2'>CV</DialogTitle>
+                    <DialogDescription>
+                      <iframe
+                        src='/cv.pdf'
+                        width='100%'
+                        height='600px'
+                        className='border border-gray-200 rounded-lg'
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
