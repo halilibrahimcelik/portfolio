@@ -5,7 +5,7 @@ import { FETCH_PROJETS_LIST, ProjectsCollection } from '@/lib/queries';
 import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Halil | Frontend Developer',
+  title: 'Halil | Projects',
   description: 'Welcome to my projects page.',
 };
 const ProjectsPage: NextPage = async () => {

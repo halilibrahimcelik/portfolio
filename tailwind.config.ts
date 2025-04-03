@@ -66,6 +66,21 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      keyframes: {
+        appear: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(-20px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        appear: 'appear 0.5s ease-in',
+      },
     },
   },
   plugins: [animate],

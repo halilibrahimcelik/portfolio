@@ -8,6 +8,7 @@ import {
   Project,
 } from '@/lib/queries';
 import { slugify } from '@/lib/utils';
+import { Link } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import Image from 'next/image';
 import { redirect, notFound } from 'next/navigation';
@@ -152,13 +153,23 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   if (isProjectId(slug) && slug !== canonicalSlug) {
     redirect(`/projects/${canonicalSlug}`);
   }
-
   return (
     <div>
       <div className='flex w-full justify-between items-center'>
-        <Heading className='flex-1 ' variant='h2'>
-          {project.title}
-        </Heading>
+        <div className='flex flex-col gap-1 '>
+          <Heading className='flex-1 ' variant='h2'>
+            {project.title}
+          </Heading>
+
+          <a
+            className='text-sm text-muted-foreground flex items-center gap-1 '
+            href={project.websiteUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <Link size={20} /> {project.websiteUrl}
+          </a>
+        </div>
 
         <GoBackButton url='/projects' />
       </div>

@@ -12,7 +12,15 @@ import { DownloadIcon, MailIcon, MapPinHouse } from 'lucide-react';
 import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
 import TextReveal from './TextPrompt';
-
+import { motion } from 'framer-motion';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
 
@@ -42,7 +50,7 @@ const StickyHeader: React.FC = () => {
     });
   };
   return (
-    <aside
+    <motion.aside
       className={`transition-all h-fit  duration-300 lg:w-64  ${
         isSticky ? 'lg:sticky lg:top-20' : '  top-0'
       }`}
@@ -131,24 +139,42 @@ const StickyHeader: React.FC = () => {
             </div>
             <hr className='my-2' />
             <div className='flex flex-col gap-4'>
-              <Button className='w-full text-center' variant={'default'}>
-                Contact Me !
-              </Button>
               <Button
                 asChild
                 className='w-full text-center'
                 variant={'default'}
               >
-                <a href='/cv.pdf' download target='_blank'>
-                  <DownloadIcon size={24} />
-                  Download CV
-                </a>
+                <Link href={'contact-me'}>Contact Me !</Link>
               </Button>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className='w-full text-center' variant={'default'}>
+                    {/* <a href='/cv.pdf' download target='_blank'> */}
+                    <DownloadIcon size={24} />
+                    Download CV
+                    {/* </a> */}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle className='text-center mb-2'>CV</DialogTitle>
+                    <DialogDescription>
+                      <iframe
+                        src='/cv.pdf'
+                        width='100%'
+                        height='600px'
+                        className='border border-gray-200 rounded-lg'
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
       </Card>
-    </aside>
+    </motion.aside>
   );
 };
 
