@@ -12,6 +12,7 @@ import { DownloadIcon, MailIcon, MapPinHouse } from 'lucide-react';
 import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
 import TextReveal from './TextPrompt';
+import { motion } from 'framer-motion';
 
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -42,7 +43,7 @@ const StickyHeader: React.FC = () => {
     });
   };
   return (
-    <aside
+    <motion.aside
       className={`transition-all h-fit  duration-300 lg:w-64  ${
         isSticky ? 'lg:sticky lg:top-20' : '  top-0'
       }`}
@@ -152,7 +153,7 @@ const StickyHeader: React.FC = () => {
           </div>
         </div>
       </Card>
-    </aside>
+    </motion.aside>
   );
 };
 

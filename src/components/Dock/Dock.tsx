@@ -52,8 +52,8 @@ type DockItemProps = {
   baseItemSize: number;
   magnification: number;
 };
-const MotionLink = motion(Link);
-const MotionCard = motion(Card);
+const MotionLink = motion.create(Link);
+const MotionCard = motion.create(Card);
 function DockItem({
   children,
   className = '',
@@ -193,6 +193,11 @@ export default function Dock({
 
   return (
     <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 100, opacity: 0 }}
+      transition={{ duration: 0.2 }}
       style={{ height, scrollbarWidth: 'none' }}
       className='mx-2 flex max-w-full items-center fixed bottom-3 left-1/2 bg-blend-multiply transform -translate-x-1/2'
     >
