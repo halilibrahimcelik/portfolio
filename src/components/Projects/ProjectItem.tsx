@@ -21,7 +21,6 @@ const ProjectItem: React.FC<Props> = ({ project, index }) => {
       <Link
         className='w-full h-full flex flex-col items-center justify-center'
         href={`/projects/${project.sys.id}`}
-        passHref
       >
         <AnimatedCard className='w-full p-3 group' circleSize={400}>
           <Heading

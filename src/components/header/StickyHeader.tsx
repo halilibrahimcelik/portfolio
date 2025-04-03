@@ -16,8 +16,6 @@ import { motion } from 'framer-motion';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
@@ -137,6 +135,7 @@ const StickyHeader: React.FC = () => {
                 London, United Kingdom
               </span>
             </div>
+
             <hr className='my-2' />
             <div className='flex flex-col gap-4'>
               <Button
@@ -148,7 +147,7 @@ const StickyHeader: React.FC = () => {
               </Button>
 
               <Dialog>
-                <DialogTrigger asChild>
+                <DialogTrigger className='hidden lg:flex' asChild>
                   <Button className='w-full text-center' variant={'default'}>
                     {/* <a href='/cv.pdf' download target='_blank'> */}
                     <DownloadIcon size={24} />
@@ -156,20 +155,36 @@ const StickyHeader: React.FC = () => {
                     {/* </a> */}
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle className='text-center mb-2'>CV</DialogTitle>
-                    <DialogDescription>
-                      <iframe
-                        src='/cv.pdf'
-                        width='100%'
-                        height='600px'
-                        className='border border-gray-200 rounded-lg'
-                      />
-                    </DialogDescription>
-                  </DialogHeader>
+                <DialogContent className=''>
+                  <div className='iframe-container border border-gray-200 rounded-lg p-4'>
+                    <DialogTitle>CV</DialogTitle>
+                    <iframe
+                      src='/cv.pdf'
+                      className='  responsive-iframe'
+                      title='CV PDF'
+                      loading='lazy'
+                    />
+                    {/* <a
+                      href='/cv.pdf'
+                      download='Halil-Ibrahim-Celik-CV.pdf'
+                      className='absolute bottom-4 right-8 bg-primary text-primary-foreground px-3 py-2 rounded-md text-sm flex items-center gap-1 shadow-md z-10'
+                    >
+                      <DownloadIcon size={16} />
+                      Download
+                    </a> */}
+                  </div>
                 </DialogContent>
               </Dialog>
+              <Button
+                asChild
+                className='w-full text-center lg:hidden'
+                variant={'default'}
+              >
+                <a href='/cv.pdf' target='_blank'>
+                  <DownloadIcon size={24} />
+                  Download CV
+                </a>
+              </Button>
             </div>
           </div>
         </div>
