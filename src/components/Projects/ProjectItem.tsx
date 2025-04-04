@@ -21,7 +21,6 @@ const ProjectItem: React.FC<Props> = ({ project, index }) => {
       <Link
         className='w-full h-full flex flex-col items-center justify-center'
         href={`/projects/${project.sys.id}`}
-        passHref
       >
         <AnimatedCard className='w-full p-3 group' circleSize={400}>
           <Heading
@@ -36,6 +35,8 @@ const ProjectItem: React.FC<Props> = ({ project, index }) => {
               src={project.image.url}
               alt={project.title}
               fill
+              priority
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               className='object-cover group-hover:h-20   transition-all ease-in duration-150  w-full rounded-2xl'
             />
           </div>

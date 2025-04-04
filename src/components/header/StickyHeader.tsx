@@ -12,7 +12,13 @@ import { DownloadIcon, MailIcon, MapPinHouse } from 'lucide-react';
 import { SocialMedia } from '@/types';
 import { toast } from 'sonner';
 import TextReveal from './TextPrompt';
-
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import ClickSpark from '../ClickSpark/ClickSpark';
 const StickyHeader: React.FC = () => {
   const [isSticky, setIsSticky] = useState(false);
 
@@ -43,7 +49,7 @@ const StickyHeader: React.FC = () => {
   };
   return (
     <aside
-      className={`transition-all h-fit  duration-300 lg:w-64  ${
+      className={`transition-all h-fit animate-appear  duration-300 lg:w-64  ${
         isSticky ? 'lg:sticky lg:top-20' : '  top-0'
       }`}
     >
@@ -113,34 +119,71 @@ const StickyHeader: React.FC = () => {
             <TextReveal />
           </div>
           <div className='bg-secondary  py-3 px-2 text-secondary-foreground shadow-sm rounded-xl '>
-            <button
-              onClick={handleCopyEmail}
-              title='Copy Email'
-              className='text-xs flex items-center gap-2 p-1 rounded-xl  hover:bg-background  dark:hover:bg-foreground hover:text-primary-foreground'
-            >
-              {' '}
-              <MailIcon size={24} />
-              <span>{SocialMedia.EMAIL}</span>
-            </button>
+            <ClickSpark sparkColor='#111'>
+              <button
+                onClick={handleCopyEmail}
+                title='Copy Email'
+                className='text-xs flex items-center transition-all ease-in duration-200 gap-2 px-2 py-1 rounded-xl  hover:bg-background  dark:hover:bg-foreground hover:text-primary-foreground'
+              >
+                {' '}
+                <MailIcon size={18} />
+                <span>{SocialMedia.EMAIL}</span>
+              </button>
+            </ClickSpark>
             <hr className='my-2' />
-            <div className='flex items-center gap-2 p-1'>
-              <MapPinHouse size={24} />
+            <div className='flex items-center gap-2 px-2 py-1'>
+              <MapPinHouse size={18} />
               <span className='text-xs text-center'>
                 London, United Kingdom
               </span>
             </div>
+
             <hr className='my-2' />
             <div className='flex flex-col gap-4'>
-              <Button className='w-full text-center' variant={'default'}>
-                Contact Me !
-              </Button>
               <Button
                 asChild
                 className='w-full text-center'
                 variant={'default'}
               >
-                <a href='/cv.pdf' download target='_blank'>
-                  <DownloadIcon size={24} />
+                <Link href={'contact-me'}>Contact Me!</Link>
+              </Button>
+
+              <Dialog>
+                <DialogTrigger className='hidden lg:flex' asChild>
+                  <Button className='w-full text-center' variant={'default'}>
+                    {/* <a href='/cv.pdf' download target='_blank'> */}
+                    <DownloadIcon size={24} />
+                    Download CV
+                    {/* </a> */}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className=''>
+                  <div className='iframe-container border border-gray-200 rounded-lg p-4'>
+                    <DialogTitle>CV</DialogTitle>
+                    <iframe
+                      src='/cv.pdf'
+                      className='  responsive-iframe'
+                      title='CV PDF'
+                      loading='lazy'
+                    />
+                    {/* <a
+                      href='/cv.pdf'
+                      download='Halil-Ibrahim-Celik-CV.pdf'
+                      className='absolute bottom-4 right-8 bg-primary text-primary-foreground px-3 py-2 rounded-md text-sm flex items-center gap-1 shadow-md z-10'
+                    >
+                      <DownloadIcon size={16} />
+                      Download
+                    </a> */}
+                  </div>
+                </DialogContent>
+              </Dialog>
+              <Button
+                asChild
+                className='w-full text-center lg:hidden'
+                variant={'default'}
+              >
+                <a href='/cv.pdf' target='_blank'>
+                  <DownloadIcon size={18} />
                   Download CV
                 </a>
               </Button>

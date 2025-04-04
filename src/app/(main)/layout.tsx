@@ -4,7 +4,7 @@ import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Card } from '@/components/ui/card';
 import Container from '@/components/ui/Container';
-import { HomeIcon, ProjectorIcon, UserIcon } from 'lucide-react';
+import { GalleryVerticalEnd, HomeIcon, UserIcon } from 'lucide-react';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const items = [
@@ -14,13 +14,13 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       href: '/',
     },
     {
-      icon: <ProjectorIcon size={18} />,
+      icon: <GalleryVerticalEnd size={18} />,
       label: 'Projects',
       href: '/projects',
     },
     {
       icon: <UserIcon size={18} />,
-      label: 'Contact Us',
+      label: 'Contact Me',
       href: '/contact-me',
     },
   ];
@@ -33,11 +33,12 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           <ThemeToggle />
         </div>
       </div>
-      <div className='flex flex-col lg:flex-row gap-4  mt-20 pb-20 relative min-h-[140vh]'>
+      <div className='flex flex-col lg:flex-row gap-4  mt-20 pb-20 relative '>
         <StickyHeader />
         <Card asChild className='flex-grow px-4 py-8 overflow-hidden'>
           <main>{children}</main>
         </Card>
+
         <Dock items={items} />
       </div>
     </Container>

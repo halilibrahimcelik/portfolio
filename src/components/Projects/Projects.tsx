@@ -11,7 +11,7 @@ type Props = {
 const Projects: React.FC<Props> = ({ projects }) => {
   return (
     <ul className='grid  grid-cols-1 my-5  gap-4 lg:grid-cols-2'>
-      <AnimatePresence mode='wait'>
+      <AnimatePresence mode='sync'>
         {projects.map((project, index) => {
           return (
             <ProjectItem key={project.sys.id} project={project} index={index} />

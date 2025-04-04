@@ -40,6 +40,7 @@ export const FETCH_SINGLE_PROJECT = gql`
       sys {
         id
       }
+      websiteUrl
       description
       image {
         url
@@ -54,6 +55,7 @@ export interface Project {
     id: string;
   };
   description: string;
+  websiteUrl: string;
   image: {
     url: string;
     title: string;
