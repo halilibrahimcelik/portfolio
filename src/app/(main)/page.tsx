@@ -9,7 +9,21 @@ import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 export const metadata: Metadata = {
   title: 'Halil | Frontend Developer',
-  description: 'This is my personal website.',
+  description: 'Welcome to my personal website',
+  keywords: [
+    'Halil Ibrahim Celik',
+    'Frontend Developer',
+    'Next.js',
+    'React.js',
+    'JavaScript',
+    'TypeScript',
+  ],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {},
 };
 const HomePage: NextPage = async () => {
   const { data } = await client.query<StacksCollection>({
