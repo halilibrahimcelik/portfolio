@@ -155,23 +155,27 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   }
   return (
     <div>
-      <div className='flex w-full justify-between items-center'>
-        <div className='flex flex-col gap-1 '>
+      <div className='flex w-full flex-col gap-3 md:gap-1 md:flex-row  justify-content-center md:justify-between  items-center'>
+        <div className='flex   items-center  md:items-start flex-col gap-1 '>
           <Heading className='flex-1 ' variant='h2'>
             {project.title}
           </Heading>
 
           <a
-            className='text-sm text-muted-foreground flex items-center gap-1 '
+            className='text-sm wtext-muted-foreground cursor-pointer transition-all ease-in duration-150 opacity-100 hover:opacity-80 hover:scale-[1.02]  flex items-center gap-1 '
             href={project.websiteUrl}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Link size={20} /> {project.websiteUrl}
+            <Link size={20} />
+            <span className='max-w-[380px] md:max-w-[400px]    text-ellipsis whitespace-nowrap    overflow-hidden '>
+              {' '}
+              {project.websiteUrl}
+            </span>
           </a>
         </div>
 
-        <GoBackButton url='/projects' />
+        <GoBackButton className='w-full md:w-fit block' url='/projects' />
       </div>
       <hr className='mt-1 mb-4' />
       <Image

@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
     name: z
       .string()
       .min(2, {
-        message: 'Name must be at least 2 characters long',
+        message: 'Please enter your name',
       })
       .max(100),
     email: z.string().email({
@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
     message: z
       .string()
       .min(1, {
-        message: 'Message is required',
+        message: 'Please enter a message',
       })
       .max(1000),
   });

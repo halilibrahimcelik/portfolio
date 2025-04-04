@@ -1,3 +1,4 @@
+import AnimateComponent from '@/components/AnimateComponent/AnimateComponent';
 import MainMenusCard from '@/components/MainMenusCard/MainMenusCard';
 import { Heading, Text } from '@/components/theme/typography';
 import TickerCarousel from '@/components/Ticker/Ticker';
@@ -6,7 +7,6 @@ import client from '@/lib/apolloClient';
 import { FETCH_TECH_STACKS, StacksCollection } from '@/lib/queries';
 import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
-
 export const metadata: Metadata = {
   title: 'Halil | Frontend Developer',
   description: 'This is my personal website.',
@@ -24,7 +24,12 @@ const HomePage: NextPage = async () => {
 
   return (
     <>
-      <div>
+      <AnimateComponent
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.5, staggerChildren: 0.2 }}
+      >
         <Heading variant='h2'>A Bit About Me</Heading>
         <hr className='mt-1 mb-4' />
         <div className='flex flex-col gap-2'>
@@ -43,23 +48,34 @@ const HomePage: NextPage = async () => {
             create something amazing together!
           </Text>
         </div>
-      </div>
-      <div className='mt-8'>
+      </AnimateComponent>
+      <AnimateComponent
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{
+          duration: 0.5,
+          staggerChildren: 0.3, // More reasonable value: 0.3 seconds between children
+          delayChildren: 0.2,
+        }}
+        className='mt-8'
+      >
         <Heading variant='h2'>What Do I do</Heading>
         <hr className='mt-1 mb-4' />
         <div className='relative grid  lg:grid-rows-2 grid-cols-1 gap-4 p-2 md:grid-cols-2 xl:grid-cols-3'>
           <MainMenusCard
+            className='w-full h-full xl:col-span-2'
             Icon={<CodeXml />}
-            className='p-4 xl:col-span-2'
             description='Create modern, scalable websites using cutting-edge technologies, delivering seamless and functional digital experiences.'
             title='Web Development'
-          ></MainMenusCard>
+          />
+
           <MainMenusCard
-            className='p-4 '
+            className=' '
             Icon={<Component />}
             description='Build dynamic, user-friendly interfaces that make your website not just functional but also fun and engaging to use.'
             title='Interactive UI'
-          ></MainMenusCard>
+          />
           <MainMenusCard
             Icon={<CircleGauge />}
             description='Speed matters. I optimize websites to load quickly and run smoothly, ensuring a seamless user experience.'
@@ -72,12 +88,22 @@ const HomePage: NextPage = async () => {
             className='xl:col-span-2'
           />
         </div>
-      </div>
-      <div className='my-8 px-2'>
+      </AnimateComponent>
+      <AnimateComponent
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{
+          duration: 0.5,
+          staggerChildren: 0.3, // More reasonable value: 0.3 seconds between children
+          delayChildren: 0.2,
+        }}
+        className='my-8 px-2'
+      >
         <Heading variant='h2'>Technologies I Work With</Heading>
         <hr className='mt-1 mb-4' />
         <TickerCarousel items={technologies} speed={60} className='py-2' />
-      </div>
+      </AnimateComponent>
     </>
   );
 };
