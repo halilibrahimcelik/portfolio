@@ -4,7 +4,7 @@ import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Card } from '@/components/ui/card';
 import Container from '@/components/ui/Container';
-import { GalleryVerticalEnd, HomeIcon, UserIcon } from 'lucide-react';
+import { GalleryVerticalEnd, HomeIcon, MessageCircle } from 'lucide-react';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const items = [
@@ -19,7 +19,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       href: '/projects',
     },
     {
-      icon: <UserIcon size={18} />,
+      icon: <MessageCircle size={18} />,
       label: 'Contact Me',
       href: '/contact-me',
     },

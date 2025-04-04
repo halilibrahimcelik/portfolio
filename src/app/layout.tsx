@@ -6,6 +6,7 @@ import BgIcon from '@/components/icons/BgIcon';
 import { Toaster } from '@/components/ui/sonner';
 import NextTopLoader from 'nextjs-toploader';
 import { ApolloClientProvider } from '@/providers/ApolloContextProvider';
+import { PostHogProvider } from '@/providers/PosthogProvider';
 
 const workSans = Work_Sans({
   variable: '--font-work-sans',
@@ -36,7 +37,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div className='relative h-full'>
-              {children}
+              <PostHogProvider>{children}</PostHogProvider>
 
               <BgIcon />
             </div>

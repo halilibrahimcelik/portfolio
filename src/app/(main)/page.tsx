@@ -8,8 +8,51 @@ import { FETCH_TECH_STACKS, StacksCollection } from '@/lib/queries';
 import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 export const metadata: Metadata = {
-  title: 'Halil | Frontend Developer',
-  description: 'This is my personal website.',
+  title: 'Halil Ibrahim Celik | Frontend Developer',
+  description:
+    'Creating seamless user interfaces and specializing in building dynamic, user-friendly web applications with Next.js, React, TypeScript and modern JavaScript.',
+  keywords: [
+    'Halil Ibrahim Celik',
+    'Frontend Developer',
+    'Web Developer',
+    'Next.js Developer',
+    'React Developer',
+    'JavaScript Expert',
+    'TypeScript',
+    'London Web Developer',
+    'UI Developer',
+    'Frontend Engineer',
+    'Web Performance',
+  ],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    url: 'https://halilibrahim.dev',
+    siteName: 'Halil Ibrahim Celik | Frontend Developer',
+    title: 'Halil Ibrahim Celik | Frontend Developer Portfolio',
+    description:
+      'London-based Frontend Developer specializing in Next.js, React, and TypeScript',
+    images: [
+      {
+        url: 'https://halilibrahim.dev/logo.png',
+        width: 250,
+        height: 250,
+        alt: 'Halil Ibrahim Celik - Frontend Developer Portfolio',
+      },
+    ],
+  },
+
+  alternates: {
+    canonical: 'https://halilibrahim.dev',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 const HomePage: NextPage = async () => {
   const { data } = await client.query<StacksCollection>({

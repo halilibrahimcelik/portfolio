@@ -6,7 +6,7 @@ const TextReveal = () => {
         sequence={[
           '',
           400,
-          'Creating seemless user interfaces,',
+          'Creating seamless user interfaces,',
 
           1000,
           'Bringing designs to life with code,',
