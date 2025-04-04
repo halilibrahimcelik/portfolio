@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       'London-based Frontend Developer specializing in Next.js, React, and TypeScript',
     images: [
       {
-        url: 'https://halilibrahim.dev/logo.png',
+        url: 'https://halilibrahim.dev/logo.jpg',
         width: 250,
         height: 250,
         alt: 'Halil Ibrahim Celik - Frontend Developer Portfolio',
