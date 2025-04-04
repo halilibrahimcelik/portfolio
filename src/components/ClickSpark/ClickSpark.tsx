@@ -121,7 +121,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
 
         // Draw the spark line
-        ctx.strokeStyle = theme === 'dark' ? '#ffffff' : '#000';
+        ctx.strokeStyle = theme === 'dark' ? sparkColor : '#000';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -168,7 +168,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   };
 
   return (
-    <div className='relative ' onClick={handleClick}>
+    <div className='relative  ' onClick={handleClick}>
       <canvas
         ref={canvasRef}
         className='absolute inset-0 pointer-events-none'
