@@ -32,7 +32,7 @@ export default function RootLayout({
         <ApolloClientProvider>
           <ThemeProvider
             attribute='class'
-            defaultTheme='system'
+            defaultTheme='dark'
             enableSystem
             disableTransitionOnChange
           >

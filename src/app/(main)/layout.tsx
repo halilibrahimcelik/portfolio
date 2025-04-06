@@ -12,15 +12,18 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       icon: <HomeIcon size={18} />,
       label: 'Home',
       href: '/',
+      ariaLabel: 'Home',
     },
     {
       icon: <GalleryVerticalEnd size={18} />,
       label: 'Projects',
       href: '/projects',
+      ariaLabel: 'Projects',
     },
     {
       icon: <MessageCircle size={18} />,
       label: 'Contact Me',
+      ariaLabel: 'Contact Me',
       href: '/contact-me',
     },
   ];
@@ -33,7 +36,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           <ThemeToggle />
         </div>
       </div>
-      <div className='flex flex-col lg:flex-row gap-4  mt-20 pb-20 relative '>
+      <div className='flex flex-col lg:flex-row gap-4  mt-10 pb-20 relative '>
         <StickyHeader />
         <Card asChild className='flex-grow px-4 py-8 overflow-hidden'>
           <main>{children}</main>

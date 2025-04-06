@@ -1,12 +1,20 @@
-import AnimateComponent from '@/components/AnimateComponent/AnimateComponent';
 import MainMenusCard from '@/components/MainMenusCard/MainMenusCard';
 import { Heading, Text } from '@/components/theme/typography';
-import TickerCarousel from '@/components/Ticker/Ticker';
 import TickerItem from '@/components/Ticker/TickerItem';
 import client from '@/lib/apolloClient';
 import { FETCH_TECH_STACKS, StacksCollection } from '@/lib/queries';
 import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
+import dynamic from 'next/dynamic';
+const AnimatedMainMenusCard = dynamic(
+  () => import('@/components/AnimateComponent/AnimateComponent'),
+  {
+    ssr: true, // If animation only matters client-side
+  }
+);
+const TickerCarousel = dynamic(() => import('@/components/Ticker/Ticker'), {
+  ssr: true,
+});
 export const metadata: Metadata = {
   title: 'Halil Ibrahim Celik | Frontend Developer',
   description:
@@ -38,9 +46,9 @@ export const metadata: Metadata = {
       'London-based Frontend Developer specializing in Next.js, React, and TypeScript',
     images: [
       {
-        url: 'https://halilibrahim.dev/logo.jpg',
-        width: 250,
-        height: 250,
+        url: 'https://halilibrahim.dev/logo.png',
+        width: 150,
+        height: 150,
         alt: 'Halil Ibrahim Celik - Frontend Developer Portfolio',
       },
     ],
@@ -54,10 +62,11 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
 const HomePage: NextPage = async () => {
   const { data } = await client.query<StacksCollection>({
     query: FETCH_TECH_STACKS,
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'cache-first',
   });
   const technologies = data?.stacksCollection.items.map((stack) => (
     <a href={stack.stackUrl} target='_blank' key={stack.label}>
@@ -67,11 +76,11 @@ const HomePage: NextPage = async () => {
 
   return (
     <>
-      <AnimateComponent
-        initial={{ opacity: 0, y: 20 }}
+      <AnimatedMainMenusCard
+        initial={{ y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, staggerChildren: 0.2 }}
+        transition={{ duration: 0.3 }}
       >
         <Heading variant='h2'>A Bit About Me</Heading>
         <hr className='mt-1 mb-4' />
@@ -91,16 +100,12 @@ const HomePage: NextPage = async () => {
             create something amazing together!
           </Text>
         </div>
-      </AnimateComponent>
-      <AnimateComponent
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+      </AnimatedMainMenusCard>
+      <AnimatedMainMenusCard
+        initial={{ y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{
-          duration: 0.5,
-          staggerChildren: 0.3, // More reasonable value: 0.3 seconds between children
-          delayChildren: 0.2,
-        }}
+        transition={{ duration: 0.3 }}
         className='mt-8'
       >
         <Heading variant='h2'>What Do I do</Heading>
@@ -131,22 +136,20 @@ const HomePage: NextPage = async () => {
             className='xl:col-span-2'
           />
         </div>
-      </AnimateComponent>
-      <AnimateComponent
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+      </AnimatedMainMenusCard>
+      <AnimatedMainMenusCard
+        initial={{ y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{
           duration: 0.5,
-          staggerChildren: 0.3, // More reasonable value: 0.3 seconds between children
-          delayChildren: 0.2,
         }}
         className='my-8 px-2'
       >
         <Heading variant='h2'>Technologies I Work With</Heading>
         <hr className='mt-1 mb-4' />
         <TickerCarousel items={technologies} speed={60} className='py-2' />
-      </AnimateComponent>
+      </AnimatedMainMenusCard>
     </>
   );
 };

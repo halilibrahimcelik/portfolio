@@ -30,6 +30,10 @@ const ThemeToggle: React.FC = () => {
   return (
     <div className='group relative'>
       <Button
+        aria-label='Toggle theme'
+        role='button'
+        data-state={theme}
+        data-theme={theme}
         className='WS relative'
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         variant='secondary'

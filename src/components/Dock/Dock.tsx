@@ -26,6 +26,7 @@ export type DockItemData = {
   icon: React.ReactNode;
   label: React.ReactNode;
   href: string;
+  ariaLabel?: string;
   className?: string;
 };
 
@@ -47,7 +48,7 @@ type DockItemProps = {
   onClick?: () => void;
   mouseX: MotionValue;
   spring: SpringOptions;
-
+  ariaLabel?: string;
   distance: number;
   baseItemSize: number;
   magnification: number;
@@ -64,6 +65,7 @@ function DockItem({
   distance,
   magnification,
   baseItemSize,
+  ariaLabel,
 }: DockItemProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   const ishovered = useMotionValue(0);
@@ -97,6 +99,7 @@ function DockItem({
     <MotionLink
       href={href}
       ref={ref}
+      aria-label={ariaLabel}
       style={{
         width: size,
         height: size,
@@ -217,6 +220,7 @@ export default function Dock({
       >
         {items.map((item, index) => (
           <DockItem
+            ariaLabel={item.ariaLabel}
             href={item.href}
             key={index}
             className={item.className}
