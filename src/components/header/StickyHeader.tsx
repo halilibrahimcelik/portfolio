@@ -123,7 +123,7 @@ const StickyHeader: React.FC = () => {
               <button
                 onClick={handleCopyEmail}
                 title='Copy Email'
-                className='text-xs flex items-center transition-all ease-in duration-200 gap-2 px-2 py-1 rounded-xl  hover:bg-background  dark:hover:bg-foreground hover:text-primary-foreground'
+                className='text-xs  flex w-full  items-center transition-all ease-in duration-200 gap-2 px-2 py-1 rounded-xl  hover:bg-background  dark:hover:bg-foreground hover:text-primary-foreground'
               >
                 {' '}
                 <MailIcon size={18} />
