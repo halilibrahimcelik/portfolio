@@ -1,5 +1,4 @@
 'use client';
-import { cn } from '@/lib/utils';
 import { HTMLMotionProps, motion } from 'framer-motion';
 
 interface Props extends HTMLMotionProps<'div'> {
@@ -20,7 +19,7 @@ const AnimateComponent: React.FC<Props> = ({
       slot={props.slot}
       animate={props.animate}
       exit={props.exit}
-      className={`${cn(className)}`}
+      className={`${className}`}
     >
       {children}
     </motion.div>

@@ -24,7 +24,7 @@ const MainMenusCard = ({
       <div className='relative px-4 pb-2 pt-4'>
         <div className='flex  gap-2 items-center'>
           <Heading
-            variant='h4'
+            variant='h3'
             className='text-lg font-semibold text-neutral-800 dark:text-neutral-300'
           >
             {title}
