@@ -20,17 +20,20 @@ const MainMenusCard = ({
   className?: string;
 }) => {
   return (
-    <AnimatedCard circleSize={circleSize} className={className}>
+    <AnimatedCard
+      circleSize={circleSize}
+      className={className + ' animated-border-wrapper'}
+    >
       <div className='relative px-4 pb-2 pt-4'>
         <div className='flex  gap-2 items-center'>
           <Heading
             variant='h3'
-            className='text-lg font-semibold text-neutral-800 dark:text-neutral-300'
+            className='text-lg max-lg:whitespace-nowrap font-semibold text-neutral-800 dark:text-neutral-300'
           >
             {title}
           </Heading>
           {Icon && (
-            <div className=' size-5  text-neutral-700 transition-all group-hover:opacity-100 dark:text-neutral-300'>
+            <div className=' mt-* text-neutral-700 transition-all group-hover:opacity-100 dark:text-neutral-300'>
               {Icon}
             </div>
           )}

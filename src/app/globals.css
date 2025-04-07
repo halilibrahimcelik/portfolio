@@ -189,3 +189,42 @@ body {
   width: 100%;
   height: 100%;
 }
+.animated-border-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.animated-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  left: -3px;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.2;
+  background: linear-gradient(135deg, #3bc4f2, #7a69f9, #f26378, #f5833f);
+  background-size: 300% 300%;
+  animation: movingBorder 6s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes movingBorder {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
