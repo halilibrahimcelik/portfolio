@@ -12,6 +12,7 @@ const ContactUsPage: NextPage = () => {
     <div className='relative'>
       <Heading variant='h2'>Contact Me</Heading>
       <hr className='mt-1 mb-4' />
+      <Text>I&apos;m open to collaboration! </Text>
       <Text>If you have any questions, feel free to reach out!</Text>
       <div
         style={{

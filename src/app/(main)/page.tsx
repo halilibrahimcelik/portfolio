@@ -6,10 +6,11 @@ import { FETCH_TECH_STACKS, StacksCollection } from '@/lib/queries';
 import { CircleGauge, CodeXml, Component, Globe } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 const AnimatedMainMenusCard = dynamic(
   () => import('@/components/AnimateComponent/AnimateComponent'),
   {
-    ssr: true, // If animation only matters client-side
+    ssr: true,
   }
 );
 const TickerCarousel = dynamic(() => import('@/components/Ticker/Ticker'), {
@@ -41,12 +42,12 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://halilibrahim.dev',
     siteName: 'Halil Ibrahim Celik | Frontend Developer',
-    title: 'Halil Ibrahim Celik | Frontend Developer Portfolio',
+    title: 'Halil Ibrahim Celik | Personal Website',
     description:
       'London-based Frontend Developer specializing in Next.js, React, and TypeScript',
     images: [
       {
-        url: 'https://halilibrahim.dev/logo.png',
+        url: 'https://halilibrahim.dev/logo.jpg',
         width: 150,
         height: 150,
         alt: 'Halil Ibrahim Celik - Frontend Developer Portfolio',
@@ -111,30 +112,39 @@ const HomePage: NextPage = async () => {
         <Heading variant='h2'>What Do I do</Heading>
         <hr className='mt-1 mb-4' />
         <div className='relative grid  lg:grid-rows-2 grid-cols-1 gap-4 p-2 md:grid-cols-2 xl:grid-cols-3'>
-          <MainMenusCard
-            className='w-full h-full xl:col-span-2'
-            Icon={<CodeXml />}
-            description='Create modern, scalable websites using cutting-edge technologies, delivering seamless and functional digital experiences.'
-            title='Web Development'
-          />
+          <Link href='/projects' className='w-full h-full xl:col-span-2 '>
+            <MainMenusCard
+              className='h-full'
+              Icon={<CodeXml size={20} />}
+              description='Create modern, scalable websites using cutting-edge technologies, delivering seamless and functional digital experiences.'
+              title='Web Development'
+            />
+          </Link>
 
-          <MainMenusCard
-            className=' '
-            Icon={<Component />}
-            description='Build dynamic, user-friendly interfaces that make your website not just functional but also fun and engaging to use.'
-            title='Interactive UI'
-          />
-          <MainMenusCard
-            Icon={<CircleGauge />}
-            description='Speed matters. I optimize websites to load quickly and run smoothly, ensuring a seamless user experience.'
-            title='Performance'
-          />
-          <MainMenusCard
-            Icon={<Globe />}
-            description='I ensure compatibility across different browsers, providing a consistent experience to all users.'
-            title='Cross-Browser Compatibility'
-            className='xl:col-span-2'
-          />
+          <Link href='/projects' className='w-full h-full'>
+            <MainMenusCard
+              className='h-full '
+              Icon={<Component size={20} />}
+              description='Build dynamic, user-friendly interfaces that make your website not just functional but also fun and engaging to use.'
+              title='Interactive UI'
+            />
+          </Link>
+          <Link href={'projects'} className='w-full h-full'>
+            <MainMenusCard
+              className='h-full'
+              Icon={<CircleGauge size={20} />}
+              description='Speed matters. I optimize websites to load quickly and run smoothly, ensuring a seamless user experience.'
+              title='Performance'
+            />
+          </Link>
+          <Link href={'projects'} className='w-full h-full xl:col-span-2'>
+            <MainMenusCard
+              Icon={<Globe size={20} />}
+              description='I ensure compatibility across different browsers, providing a consistent experience to all users.'
+              title='Cross-Browser Compatibility'
+              className='h-full'
+            />
+          </Link>
         </div>
       </AnimatedMainMenusCard>
       <AnimatedMainMenusCard
