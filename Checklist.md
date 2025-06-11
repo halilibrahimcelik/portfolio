@@ -96,11 +96,6 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 ### **Backend Features**
 
-- [ ] **Database Setup**
-
-  - [ ] Set up Neon Serverless Postgres database.
-  - [ ] Configure Drizzle ORM for database interactions.
-  - [ ] Create tables for projects, blog posts (if applicable), and contact form submissions.
 
 - [ ] **API Endpoints**
 
@@ -119,10 +114,10 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 ### **Design and Functionality**
 
-- [ ] **Responsive Design**
+- [x] **Responsive Design**
 
-  - [ ] Ensure the website works well on desktop, tablet, and mobile.
-  - [ ] Test responsiveness using browser developer tools.
+  - [x] Ensure the website works well on desktop, tablet, and mobile.
+  - [x] Test responsiveness using browser developer tools.
 
 - [ ] **Accessibility**
 
