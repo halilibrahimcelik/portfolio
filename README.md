@@ -1,6 +1,8 @@
 <h1 align="center">My Portfolio</h1>
+<p align="center"> 
+   <img src="public/logo.jpg" alt="Portfolio Banner" width="50%" style="display: block; margin: auto;">
 
-<img src="public/logo.jpg" alt="Portfolio Banner" width="50%" style="display: block; margin: auto;">
+</p>
 <br/>
 Welcome to my personal website, where I showcase my skills, projects, and expertise as a Frontend Developer. Visit the live site at [halilibrahim.dev](https://www.halilibrahim.dev/).
 
