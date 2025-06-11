@@ -1,7 +1,7 @@
-# My portfolio
+<h1 align="center">My Portfolio</h1>
 
-![Portfolio Banner](public/logo.jpg)
-
+<img src="public/logo.jpg" alt="Portfolio Banner" width="50%" style="display: block; margin: auto;">
+<br/>
 Welcome to my personal website, where I showcase my skills, projects, and expertise as a Frontend Developer. Visit the live site at [halilibrahim.dev](https://www.halilibrahim.dev/).
 
 ## ✨ Features
@@ -97,11 +97,5 @@ Welcome to my personal website, where I showcase my skills, projects, and expert
 - [ ] Advanced animations and page transitions
 - [ ] Improved accessibility features
 - [ ] Performance optimizations
-
-## 📝 License
-
-MIT
-
----
 
 Built with ❤️ by [Halil Ibrahim Celik](https://www.halilibrahim.dev)
