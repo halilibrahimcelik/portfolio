@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My portfolio
 
-## Getting Started
+![Portfolio Banner](public/logo.jpg)
 
-First, run the development server:
+Welcome to my personal website, where I showcase my skills, projects, and expertise as a Frontend Developer. Visit the live site at [halilibrahim.dev](https://www.halilibrahim.dev/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Interactive UI/UX** - Modern design with smooth animations and transitions
+- **Dark/Light Theme** - Personalized viewing experience with theme preference saved to local storage
+- **Responsive Design** - Optimized for all device sizes (mobile, tablet, and desktop)
+- **Project Showcase** - Detailed project pages with descriptions and technologies used
+- **Contact Form** - Easy way to reach out and connect with me
+- **Sticky Social Links** - Quick access to my professional profiles
+- **Dynamic Content** - Content managed through CMS for easy updates
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
 
-## Learn More
+- **Framework:** [Next.js](https://nextjs.org/)
+- **UI Library:** [shadcn/ui](https://ui.shadcn.com/)
+- **Form Management:** [React Hook Form](https://react-hook-form.com/)
+- **State Management:** [Context API](https://reactjs.org/docs/context.html)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) & [React Type Animation](https://www.npmjs.com/package/react-type-animation)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
-To learn more about Next.js, take a look at the following resources:
+### Backend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **CMS:** [Contentful](https://www.contentful.com/)
+- **API:** [Apollo Client](https://www.apollographql.com/docs/react/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js (v16+)
+- pnpm, npm, or yarn
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/personal-portfolio.git
+   cd personal-portfolio
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Create a `.env` file in the root directory with your credentials:
+
+   ```
+   # Contentful
+   CONTENTFUL_SPACE_ID=your_space_id
+   CONTENTFUL_ACCESS_TOKEN=your_access_token
+
+   # Database
+   DATABASE_URL=your_neon_db_url
+   ```
+
+4. Run the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📋 Project Structure
+
+- `src/app/` - Next.js application pages
+- `src/components/` - Reusable UI components
+- `src/lib/` - Utility functions and API clients
+- `src/providers/` - React context providers
+- `src/hooks/` - Custom React hooks
+- `src/types/` - TypeScript type definitions
+- `public/` - Static assets
+
+## 🌟 Core Features Implemented
+
+- [x] **Dark/Light Theme Toggle** with CSS variables and Context API
+- [x] **Responsive UI Components** using shadcn/ui
+- [x] **Projects Page** with detailed project information
+- [x] **Contact Form** with React Hook Form
+- [x] **Sticky Social Links Header** for easy profile access
+- [x] **Content Management** via Contentful CMS
+- [x] **Animations** using Framer Motion
+
+## 🔮 Future Enhancements
+
+- [ ] Blog section with technical articles and tutorials
+- [ ] Advanced animations and page transitions
+- [ ] Improved accessibility features
+- [ ] Performance optimizations
+
+## 📝 License
+
+MIT
+
+---
+
+Built with ❤️ by [Halil Ibrahim Celik](https://www.halilibrahim.dev)
