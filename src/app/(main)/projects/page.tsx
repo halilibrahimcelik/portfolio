@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const ProjectsPage: NextPage = async () => {
   const { data } = await client.query<ProjectsCollection>({
     query: FETCH_PROJETS_LIST,
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-and-network',
   });
 
   return (
