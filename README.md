@@ -232,6 +232,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - **Website:** [https://www.halilibrahim.dev/](https://www.halilibrahim.dev/)
 - **GitHub:** [@halilibrahimcelik](https://github.com/halilibrahimcelik)
-- **LinkedIn:** [Halil Ibrahim Celik](https://linkedin.com/in/halilibrahimcelik)
+- **LinkedIn:** [Halil Ibrahim Celik](https://www.linkedin.com/in/halil-ibrahim-celik)
 
 ---
