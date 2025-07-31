@@ -8,10 +8,11 @@ export const metadata: Metadata = {
   title: 'Halil | Projects',
   description: 'Welcome to my projects page.',
 };
+
 const ProjectsPage: NextPage = async () => {
   const { data } = await client.query<ProjectsCollection>({
     query: FETCH_PROJETS_LIST,
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
   });
 
   return (
