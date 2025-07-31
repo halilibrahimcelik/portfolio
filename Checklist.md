@@ -52,10 +52,10 @@ Here’s a checklist of all the features and tasks I need to complete for this p
     - Cards (for projects)
     - Forms (for contact page)
     - Navigation bars (fixed and sticky)
-  - [ ] Ensure all components are responsive and accessible.
+  - [x] Ensure all components are responsive and accessible.
 
-- [ ] **Animations and Transitions**
-  - [ ] Use Framer Motion for:
+- [x] **Animations and Transitions**
+  - [x] Use Framer Motion for:
     - Page transitions (e.g., fade-in, slide-in).
     - Hover effects on buttons and cards.
     - Smooth theme transitions.
@@ -64,9 +64,9 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 #### **2. Homepage**
 
-- [ ] Add a fixed header at the bottom with navigation links.
-- [ ] Include a section for my bio, experience, and tech stacks.
-- [ ] Style the homepage using the chosen color palette and typography.
+- [x] Add a fixed header at the bottom with navigation links.
+- [x] Include a section for my bio, experience, and tech stacks.
+- [x] Style the homepage using the chosen color palette and typography.
 
 ---
 
@@ -119,18 +119,18 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 ### **Design and Functionality**
 
-- [ ] **Responsive Design**
+- [x] **Responsive Design**
 
-  - [ ] Ensure the website works well on desktop, tablet, and mobile.
-  - [ ] Test responsiveness using browser developer tools.
+  - [x] Ensure the website works well on desktop, tablet, and mobile.
+  - [x] Test responsiveness using browser developer tools.
 
 - [ ] **Accessibility**
 
   - [ ] Follow WCAG guidelines (e.g., contrast ratio, keyboard navigation).
   - [ ] Add ARIA labels for better screen reader compatibility.
 
-- [ ] **Performance Optimization**
-  - [ ] Optimize images for faster loading.
+- [x] **Performance Optimization**
+  - [x] Optimize images for faster loading.
   - [ ] Use lazy loading for images and content below the fold.
   - [ ] Minimize the use of heavy libraries.
 
