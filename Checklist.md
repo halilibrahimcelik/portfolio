@@ -96,11 +96,6 @@ Here’s a checklist of all the features and tasks I need to complete for this p
 
 ### **Backend Features**
 
-- [ ] **Database Setup**
-
-  - [ ] Set up Neon Serverless Postgres database.
-  - [ ] Configure Drizzle ORM for database interactions.
-  - [ ] Create tables for projects, blog posts (if applicable), and contact form submissions.
 
 - [ ] **API Endpoints**
 
