@@ -4,7 +4,12 @@ import Logo from '@/components/icons/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Card } from '@/components/ui/card';
 import Container from '@/components/ui/Container';
-import { GalleryVerticalEnd, HomeIcon, MessageCircle } from 'lucide-react';
+import {
+  GalleryVerticalEnd,
+  HomeIcon,
+  MessageCircle,
+  BookOpenText,
+} from 'lucide-react';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const items = [
@@ -19,6 +24,12 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       label: 'Projects',
       href: '/projects',
       ariaLabel: 'Projects',
+    },
+    {
+      icon: <BookOpenText />,
+      label: 'Blog',
+      href: '/blog',
+      ariaLabel: 'Blog',
     },
     {
       icon: <MessageCircle size={18} />,

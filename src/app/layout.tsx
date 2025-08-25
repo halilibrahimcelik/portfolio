@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Work_Sans, Open_Sans } from 'next/font/google';
+import { Work_Sans, Open_Sans, Rubik, Rubik_Mono_One } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import BgIcon from '@/components/icons/BgIcon';
@@ -16,6 +16,16 @@ const openSans = Open_Sans({
   variable: '--font-open-sans',
   subsets: ['latin'],
 });
+const rubikFont = Rubik({
+  variable: '--font-rubik',
+  subsets: ['latin'],
+});
+const rubikMonoOneFont = Rubik_Mono_One({
+  variable: '--font-rubik-mono',
+  subsets: ['latin'],
+  weight: '400',
+});
+
 export const metadata: Metadata = {
   title: 'Halil | Frontend Developer',
   description: 'This is my personal website.',
@@ -28,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${workSans.variable} ${openSans.variable} `}>
+      <body className={`${rubikFont.variable} ${rubikMonoOneFont.variable} `}>
         <ApolloClientProvider>
           <ThemeProvider
             attribute='class'
