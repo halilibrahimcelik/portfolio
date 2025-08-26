@@ -1,14 +1,19 @@
 'use client';
 import { AnimatePresence } from 'framer-motion';
 import BlogItem from './BlogItem';
+import { Blog } from '@/lib/queries';
 
-const Blogs: React.FC = () => {
+type Props = {
+  data: Blog[];
+};
+const Blogs: React.FC<Props> = ({ data }) => {
   const arrayOf5 = Array.from({ length: 5 }, (_, i) => i);
+  console.log(data);
   return (
     <ul className='grid grid-cols gap-5 md:grid-cols-2 '>
       <AnimatePresence mode='sync'>
-        {arrayOf5.map((i) => {
-          return <BlogItem key={i} index={i} />;
+        {data.map((blog, index) => {
+          return <BlogItem key={blog.sys.id} blog={blog} index={index} />;
         })}
       </AnimatePresence>
     </ul>

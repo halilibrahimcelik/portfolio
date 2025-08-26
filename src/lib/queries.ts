@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { Document } from '@contentful/rich-text-types';
 
 export const FETCH_PROJETS_LIST = gql`
   query FetchList {
@@ -49,6 +50,85 @@ export const FETCH_SINGLE_PROJECT = gql`
     }
   }
 `;
+export const FETCH_BLOG_LIST = gql`
+  query FetchBlogs {
+    blogsCollection(limit: 10) {
+      items {
+        blogTitle
+        sys {
+          id
+        }
+        description {
+          json
+          links {
+            assets {
+              hyperlink {
+                url
+              }
+              block {
+                url
+              }
+            }
+          }
+        }
+        teaserIntro
+        image1 {
+          url
+          title
+        }
+        image2 {
+          url
+          title
+        }
+        image3 {
+          url
+          title
+        }
+        coverImage {
+          url
+          title
+        }
+      }
+    }
+  }
+`;
+export interface Blog {
+  blogTitle: string;
+  sys: {
+    id: string;
+  };
+  teaserIntro: string;
+  description: {
+    json: Document;
+    links: {
+      assets: {
+        block: {
+          sys: {
+            id: string;
+          };
+          url: string;
+          title: string;
+        }[];
+      };
+    };
+  };
+  image1: {
+    url: string;
+    title: string;
+  };
+  image2: {
+    url: string;
+    title: string;
+  };
+  image3: {
+    url: string;
+    title: string;
+  };
+  coverImage: {
+    url: string;
+    title: string;
+  };
+}
 export interface Project {
   title: string;
   sys: {
@@ -77,5 +157,10 @@ export interface StacksCollection {
 export interface ProjectsCollection {
   projectsCollection: {
     items: Project[];
+  };
+}
+export interface BlogsCollection {
+  blogsCollection: {
+    items: Blog[];
   };
 }

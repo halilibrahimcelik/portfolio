@@ -57,7 +57,6 @@ const ProjectDetail: React.FC<Props> = async ({ project }) => {
       },
       [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => {
         // Sometimes code blocks are converted to blockquotes during markdown conversion
-        console.log('Quote block:', node);
         return (
           <blockquote className='border-l-4 border-gray-300 pl-4 italic my-4'>
             {children}

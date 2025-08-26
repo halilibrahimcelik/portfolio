@@ -5,10 +5,14 @@ import ClickSpark from '../ClickSpark/ClickSpark';
 import AnimatedCard from '../ui/AnimatedCard';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Blog } from '@/lib/queries';
 type Props = {
   index: number;
+  blog: Blog;
 };
-const BlogItem: React.FC<Props> = ({ index }) => {
+const BlogItem: React.FC<Props> = ({ index, blog }) => {
+  console.log(blog.coverImage?.url);
+
   return (
     <motion.li
       initial={{ opacity: 0, y: -20 }}
@@ -21,28 +25,26 @@ const BlogItem: React.FC<Props> = ({ index }) => {
           variant='h4'
           className='dark:group-hover:text-white relative text-center mb-2'
         >
-          Blog Title
+          {blog.blogTitle}
         </Heading>
-        <Image
+        <img
           alt='Blog Cover'
-          priority
           width={'100'}
           height={100}
           className='object-cover  relative   transition-all ease-in duration-150  w-full rounded-2xl'
-          src={'/logo.jpg'}
+          src={blog.coverImage?.url || '/placeholder.png'}
         />
         <Text className='relative line-clamp-3 overflow-hidden text-ellipsis'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas qui,
-          quisquam dolorem maxime sequi omnis dicta dignissimos facilis
-          reprehenderit dolorum alias praesentium deleniti modi possimus, iusto
-          id corporis eveniet magnam et quia tempore in sapiente natus eum?
-          Ullam nemo ipsa impedit, sed qui quisquam fuga nihil error nisi
-          mollitia? Amet.
+          {blog.teaserIntro}
         </Text>
-        <Link href={`/blog/sample-blog-slug`} className='self-end'>
+
+        <Link
+          className='self-end relative z-10 cursor-pointer'
+          href={`/blog/sample-blog-slug`}
+        >
           <Button variant={'secondary'}>
-            <ClickSpark>Read More</ClickSpark>
-          </Button>{' '}
+            <ClickSpark>Read More </ClickSpark>
+          </Button>
         </Link>
       </AnimatedCard>
     </motion.li>

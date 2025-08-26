@@ -166,14 +166,6 @@ const StickyHeader: React.FC = () => {
                       title='CV PDF'
                       loading='lazy'
                     />
-                    {/* <a
-                      href='/cv.pdf'
-                      download='Halil-Ibrahim-Celik-CV.pdf'
-                      className='absolute bottom-4 right-8 bg-primary text-primary-foreground px-3 py-2 rounded-md text-sm flex items-center gap-1 shadow-md z-10'
-                    >
-                      <DownloadIcon size={16} />
-                      Download
-                    </a> */}
                   </div>
                 </DialogContent>
               </Dialog>
