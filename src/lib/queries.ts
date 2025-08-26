@@ -87,11 +87,45 @@ export const FETCH_BLOG_LIST = gql`
         coverImage {
           url
           title
+          width
+          height
         }
       }
     }
   }
 `;
+export const FETCH_SINGLE_BLOG = gql`
+  query FetchSingBlog($id: String!) {
+    blogs(id: $id) {
+      blogTitle
+      coverImage {
+        url
+        width
+        height
+      }
+      description {
+        json
+        links {
+          assets {
+            block {
+              sys {
+                id
+              }
+              url
+              title
+              width
+              height
+            }
+          }
+        }
+      }
+      image1 {
+        url
+      }
+    }
+  }
+`;
+
 export interface Blog {
   blogTitle: string;
   sys: {
@@ -108,6 +142,8 @@ export interface Blog {
           };
           url: string;
           title: string;
+          width: number;
+          height: number;
         }[];
       };
     };
@@ -127,6 +163,8 @@ export interface Blog {
   coverImage: {
     url: string;
     title: string;
+    width: number;
+    height: number;
   };
 }
 export interface Project {

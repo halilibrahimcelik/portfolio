@@ -7,8 +7,6 @@ type Props = {
   data: Blog[];
 };
 const Blogs: React.FC<Props> = ({ data }) => {
-  const arrayOf5 = Array.from({ length: 5 }, (_, i) => i);
-  console.log(data);
   return (
     <ul className='grid grid-cols gap-5 md:grid-cols-2 '>
       <AnimatePresence mode='sync'>

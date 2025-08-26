@@ -27,10 +27,11 @@ const BlogItem: React.FC<Props> = ({ index, blog }) => {
         >
           {blog.blogTitle}
         </Heading>
-        <img
+        <Image
           alt='Blog Cover'
-          width={'100'}
-          height={100}
+          width={`${blog.coverImage?.width}` || '500'}
+          quality={100}
+          height={blog.coverImage?.height || 300}
           className='object-cover  relative   transition-all ease-in duration-150  w-full rounded-2xl'
           src={blog.coverImage?.url || '/placeholder.png'}
         />
@@ -40,7 +41,7 @@ const BlogItem: React.FC<Props> = ({ index, blog }) => {
 
         <Link
           className='self-end relative z-10 cursor-pointer'
-          href={`/blog/sample-blog-slug`}
+          href={`/blog/${blog.sys.id}`}
         >
           <Button variant={'secondary'}>
             <ClickSpark>Read More </ClickSpark>

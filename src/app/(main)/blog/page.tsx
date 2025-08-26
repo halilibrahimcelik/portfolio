@@ -2,7 +2,6 @@ import Blogs from '@/components/Blogs/Blogs';
 import { Heading, Text } from '@/components/theme/typography';
 import client from '@/lib/apolloClient';
 import { BlogsCollection, FETCH_BLOG_LIST } from '@/lib/queries';
-import { useQuery } from '@apollo/client';
 import { Metadata, NextPage } from 'next';
 export const metadata: Metadata = {
   title: 'Halil | Blogs',
