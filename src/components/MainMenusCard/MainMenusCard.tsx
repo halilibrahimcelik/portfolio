@@ -1,7 +1,7 @@
 'use client';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { Heading } from '../theme/typography';
+import { Heading, Text } from '../theme/typography';
 import AnimatedCard from '../ui/AnimatedCard';
 
 const MainMenusCard = ({
@@ -38,9 +38,7 @@ const MainMenusCard = ({
             </div>
           )}
         </div>
-        <p className='mt-2 text-neutral-600 dark:text-neutral-400'>
-          {description}
-        </p>
+        <Text className='relative'>{description}</Text>
       </div>
       {children && (
         <div

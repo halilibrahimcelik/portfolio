@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Work_Sans, Open_Sans, Rubik, Rubik_Mono_One } from 'next/font/google';
+import { Rubik, Rubik_Mono_One } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import BgIcon from '@/components/icons/BgIcon';
@@ -8,14 +8,6 @@ import NextTopLoader from 'nextjs-toploader';
 import { ApolloClientProvider } from '@/providers/ApolloContextProvider';
 import { PostHogProvider } from '@/providers/PosthogProvider';
 
-const workSans = Work_Sans({
-  variable: '--font-work-sans',
-  subsets: ['latin'],
-});
-const openSans = Open_Sans({
-  variable: '--font-open-sans',
-  subsets: ['latin'],
-});
 const rubikFont = Rubik({
   variable: '--font-rubik',
   subsets: ['latin'],
@@ -46,7 +38,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className='relative h-full'>
+            <div className='relative min-h-screen'>
               <PostHogProvider>{children}</PostHogProvider>
 
               <BgIcon />
