@@ -12,6 +12,8 @@ import { Blog } from '@/lib/queries';
 import CopyButton from '../ui/CopyButton';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { agate } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import GoBackButton from '../ui/GoBackButton';
+import ShareButtons from '../ShareButtons/ShareButtons';
 
 type Props = {
   blog: Blog;
@@ -126,19 +128,12 @@ const BlogDetail: React.FC<Props> = ({ blog }) => {
   };
 
   return (
-    // <div className='flex justify-center items-center my-4'>
-    //   <Zoom classDialog='custom-zoom' zoomMargin={40}>
-    //     <img
-    //       alt='Blog Cover'
-    //       width={'150'}
-    //       height={'150'}
-    //       className='object-cover   relative   transition-all ease-in duration-150   rounded-2xl'
-    //       src={'/ss.png'}
-    //     />
-    //   </Zoom>
-    // </div>
     <div className='blog-content'>
       {documentToReactComponents(blog.description.json, options)}
+      <div className='flex  justify-between items-center w-full'>
+        <ShareButtons />
+        <GoBackButton url='/blog' />
+      </div>
     </div>
   );
 };

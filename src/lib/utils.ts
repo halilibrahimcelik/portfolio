@@ -65,3 +65,6 @@ export function slugify(text: string): string {
     .replace(/[^\w\-]+/g, '') // Remove all non-word characters
     .replace(/\-\-+/g, '-'); // Replace multiple - with single -
 }
+export function isSlugId(slug: string): boolean {
+  return /^[a-zA-Z0-9]{16,}$/.test(slug);
+}

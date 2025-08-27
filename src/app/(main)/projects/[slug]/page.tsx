@@ -7,7 +7,7 @@ import {
   FETCH_SINGLE_PROJECT,
   Project,
 } from '@/lib/queries';
-import { slugify } from '@/lib/utils';
+import { isSlugId, slugify } from '@/lib/utils';
 import { Link } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import Image from 'next/image';
@@ -18,9 +18,6 @@ type Props = {
 };
 
 // This function checks if the provided slug is an ID
-function isProjectId(slug: string): boolean {
-  return /^[a-zA-Z0-9]{16,}$/.test(slug);
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -28,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let projectId: string = slug;
 
   // If this is a title-based slug, we need to find the corresponding ID
-  if (!isProjectId(slug)) {
+  if (!isSlugId(slug)) {
     // Try to fetch from cache first
     try {
       const { data: allProjectsData } = await client.query({
@@ -97,7 +94,7 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   let projectId: string = slug;
 
   // If this is a title-based slug, we need to find the corresponding ID
-  if (!isProjectId(slug)) {
+  if (!isSlugId(slug)) {
     // Try to fetch from cache first
     try {
       const { data: allProjectsData } = await client.query({
@@ -150,7 +147,7 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   const canonicalSlug = slugify(project.title);
 
   // If we're on an ID URL, redirect to the canonical slug URL
-  if (isProjectId(slug) && slug !== canonicalSlug) {
+  if (isSlugId(slug) && slug !== canonicalSlug) {
     redirect(`/projects/${canonicalSlug}`);
   }
   return (
