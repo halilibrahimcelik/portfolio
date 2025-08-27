@@ -95,7 +95,6 @@ const BlogDetailPage: NextPage<Props> = async ({ params }) => {
   const { slug } = await params;
   let blog: Blog | null = null;
   let blogId: string = slug;
-  console.log(isSlugId(slug));
   // If this is a title-based slug, we need to find the corresponding ID
   if (!isSlugId(slug)) {
     // Try to fetch from cache first
@@ -104,7 +103,6 @@ const BlogDetailPage: NextPage<Props> = async ({ params }) => {
         query: FETCH_BLOG_LIST,
         fetchPolicy: 'cache-only',
       });
-      console.log(allBlogData);
       // Find the project with the matching slug
       const matchingProject = allBlogData.blogsCollection.items.find(
         (p: Blog) => slugify(p.blogTitle) === slug
@@ -119,7 +117,6 @@ const BlogDetailPage: NextPage<Props> = async ({ params }) => {
         query: FETCH_BLOG_LIST,
         fetchPolicy: 'network-only', // Fallback to network
       });
-      console.log(allBlogData);
       // Find the project with the matching slug
       const matchingProject = allBlogData.blogsCollection.items.find(
         (p: Blog) => slugify(p.blogTitle) === slug

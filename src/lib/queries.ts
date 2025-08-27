@@ -97,7 +97,7 @@ export const FETCH_BLOG_LIST = gql`
   }
 `;
 export const FETCH_SINGLE_BLOG = gql`
-  query FetchSingBlog($id: String!) {
+  query FetchSingleBlog($id: String!) {
     blogs(id: $id) {
       blogTitle
       sys {

@@ -17,11 +17,18 @@ import ShareButtons from '../ShareButtons/ShareButtons';
 import { Calendar } from 'lucide-react';
 import { Text } from '../theme/typography';
 import { format } from 'date-fns';
+import { useEffect, useState } from 'react';
 
 type Props = {
   blog: Blog;
 };
 const BlogDetail: React.FC<Props> = ({ blog }) => {
+  const [url, setUrl] = useState('');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setUrl(window.location.href);
+    }
+  }, []);
   const options: Options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => (
@@ -146,7 +153,7 @@ const BlogDetail: React.FC<Props> = ({ blog }) => {
       </div>
       <hr className='my-4' />
       <div className='flex  justify-between items-center w-full'>
-        <ShareButtons title={blog.blogTitle} url={window.location.href} />
+        <ShareButtons title={blog.blogTitle} url={url} />
         <GoBackButton url='/blog' />
       </div>
     </div>
