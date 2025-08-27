@@ -19,7 +19,7 @@ const BlogDetailPage: NextPage<Props> = async ({ params }) => {
   });
 
   return (
-    <div>
+    <div className='test'>
       <Heading variant='h2'>{blogs.blogTitle}</Heading>
       <hr className='mt-1 mb-4' />
 

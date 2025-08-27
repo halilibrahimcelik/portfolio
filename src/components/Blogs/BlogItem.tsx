@@ -6,6 +6,8 @@ import AnimatedCard from '../ui/AnimatedCard';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Blog } from '@/lib/queries';
+import { Calendar } from 'lucide-react';
+import { format } from 'date-fns';
 type Props = {
   index: number;
   blog: Blog;
@@ -20,7 +22,7 @@ const BlogItem: React.FC<Props> = ({ index, blog }) => {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.1 * index }}
     >
-      <AnimatedCard circleSize={100} className='flex flex-col gap-2'>
+      <AnimatedCard circleSize={100} className='flex flex-col gap-2 p-4'>
         <Heading
           variant='h4'
           className='dark:group-hover:text-white relative text-center mb-2'
@@ -38,15 +40,26 @@ const BlogItem: React.FC<Props> = ({ index, blog }) => {
         <Text className='relative line-clamp-3 overflow-hidden text-ellipsis'>
           {blog.teaserIntro}
         </Text>
+        <div className='flex items-center justify-between mt-auto opacity-75'>
+          <Text
+            variant='xs'
+            className='flex relative items-center gap-2 text-sm '
+          >
+            <Calendar size={16} />
+            <span>
+              {format(new Date(blog.sys.firstPublishedAt), 'MMM dd, yyyy')}
+            </span>
+          </Text>
 
-        <Link
-          className='self-end relative z-10 cursor-pointer'
-          href={`/blog/${blog.sys.id}`}
-        >
-          <Button variant={'secondary'}>
-            <ClickSpark>Read More </ClickSpark>
-          </Button>
-        </Link>
+          <Link
+            className='self-end relative z-10 cursor-pointer'
+            href={`/blog/${blog.sys.id}`}
+          >
+            <Button variant={'secondary'}>
+              <ClickSpark>Read More </ClickSpark>
+            </Button>
+          </Link>
+        </div>
       </AnimatedCard>
     </motion.li>
   );

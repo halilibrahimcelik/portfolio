@@ -57,6 +57,8 @@ export const FETCH_BLOG_LIST = gql`
         blogTitle
         sys {
           id
+          firstPublishedAt
+          publishedAt
         }
         description {
           json
@@ -98,6 +100,10 @@ export const FETCH_SINGLE_BLOG = gql`
   query FetchSingBlog($id: String!) {
     blogs(id: $id) {
       blogTitle
+      sys {
+        firstPublishedAt
+        publishedAt
+      }
       coverImage {
         url
         width
@@ -130,6 +136,8 @@ export interface Blog {
   blogTitle: string;
   sys: {
     id: string;
+    firstPublishedAt: Date;
+    publishedAt: Date;
   };
   teaserIntro: string;
   description: {
