@@ -14,6 +14,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { agate } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import GoBackButton from '../ui/GoBackButton';
 import ShareButtons from '../ShareButtons/ShareButtons';
+import { Calendar } from 'lucide-react';
+import { Text } from '../theme/typography';
+import { format } from 'date-fns';
 
 type Props = {
   blog: Blog;
@@ -130,8 +133,20 @@ const BlogDetail: React.FC<Props> = ({ blog }) => {
   return (
     <div className='blog-content'>
       {documentToReactComponents(blog.description.json, options)}
+      <div className='flex justify-end items-center gap-1 '>
+        <Text variant='xs' className='mb-[-1px]'>
+          Last Updated
+        </Text>
+        <div className='flex items-center gap-1'>
+          <Calendar size={16} />
+          <Text variant='xs'>
+            {format(blog.sys.publishedAt, 'MMM dd, yyyy')}
+          </Text>
+        </div>
+      </div>
+      <hr className='my-4' />
       <div className='flex  justify-between items-center w-full'>
-        <ShareButtons />
+        <ShareButtons title={blog.blogTitle} url={window.location.href} />
         <GoBackButton url='/blog' />
       </div>
     </div>
