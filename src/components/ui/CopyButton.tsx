@@ -6,10 +6,16 @@ import { toast } from 'sonner';
 
 type Props = {
   text: string;
+  notVisible?: boolean;
   buttonClass?: React.HTMLAttributes<HTMLButtonElement>['className'];
   textClass?: React.HTMLAttributes<HTMLElement>['className'];
 };
-const CopyButton: React.FC<Props> = ({ text, textClass, buttonClass }) => {
+const CopyButton: React.FC<Props> = ({
+  text,
+  textClass,
+  buttonClass,
+  notVisible = false,
+}) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(text?.toString() || '');
     toast.success('Copied to clipboard!', {
@@ -26,10 +32,12 @@ const CopyButton: React.FC<Props> = ({ text, textClass, buttonClass }) => {
   return (
     <>
       <button onClick={handleCopy} className={`${cn(buttonClass)} `}>
-        <code className={`${textClass} font-mono text-sm`}>{text}</code>
+        {!notVisible && (
+          <code className={`${textClass} font-mono text-sm`}>{text}</code>
+        )}
         <Copy
           size={20}
-          className='opacity-0 transition-opacity duration-200 ease-in absolute right-2 top-4 group-hover:opacity-100'
+          className='opacity-50 transition-opacity duration-200 ease-in absolute right-2 top-4 group-hover:opacity-100'
         />
       </button>
     </>

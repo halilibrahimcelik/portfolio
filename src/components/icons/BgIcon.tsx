@@ -110,9 +110,26 @@ const BgIcon: React.FC<BgIconProps> = ({
             style={{ transition: 'opacity 2s ease-in, fill 1s ease' }}
             fill={theme === 'dark' ? starClr : 'transparent'}
           >
-            {stars?.map((star, index) => (
-              <polygon key={index} points={star.points} />
-            ))}
+            <g>
+              <animateTransform
+                attributeName='transform'
+                type='translate'
+                from='0 0'
+                to='0 200'
+                dur='150s'
+                repeatCount='indefinite'
+              />
+              <g>
+                {stars?.map((star, index) => (
+                  <polygon key={index} points={star.points} />
+                ))}
+              </g>
+              <g transform='translate(0 -200)'>
+                {stars?.map((star, index) => (
+                  <polygon key={index} points={star.points} />
+                ))}
+              </g>
+            </g>
           </g>
         </svg>
       </div>

@@ -1,0 +1,11 @@
+{
+  "chat.mcp.serverSampling": {
+    "personal-portfolio/.vscode/mcp.json: github": {
+      "allowedModels": [
+        "copilot/gpt-4.1",
+        "copilot/claude-3.5-sonnet",
+        "copilot/claude-3.7-sonnet"
+      ]
+    }
+  }
+}

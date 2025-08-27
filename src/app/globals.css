@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-work-sans), var(--font-open-sans);
+  font-family: var(--font-rubik), var(--font-rubik-mono);
 }
 
 @layer base {
@@ -210,7 +210,9 @@ body {
   animation: movingBorder 6s linear infinite;
   filter: blur(2px);
 }
-
+.custom-zoom [data-rmiz-modal-overlay='visible'] {
+  background-color: rgba(56, 58, 89, 0);
+}
 @keyframes movingBorder {
   0% {
     background-position: 0% 0%;
