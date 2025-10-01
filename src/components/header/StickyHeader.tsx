@@ -145,7 +145,7 @@ const StickyHeader: React.FC = () => {
                 className='w-full text-center'
                 variant={'default'}
               >
-                <Link href={'contact-me'}>Contact Me!</Link>
+                <Link href={'/contact-me'}>Contact Me!</Link>
               </Button>
 
               <Dialog>

@@ -22,7 +22,7 @@ const BlogItem: React.FC<Props> = ({ index, blog }) => {
     >
       {' '}
       <Link
-        className='self-end relative z-10 cursor-pointer'
+        className='self-end relative z-[2] cursor-pointer'
         href={`/blog/${blog.sys.id}`}
       >
         <AnimatedCard circleSize={100} className='flex flex-col gap-2 p-4'>

@@ -202,7 +202,7 @@ export default function Dock({
       exit={{ y: 100, opacity: 0 }}
       transition={{ duration: 0.2 }}
       style={{ height, scrollbarWidth: 'none' }}
-      className='mx-2 flex max-w-full items-center fixed bottom-3 left-1/2 bg-blend-multiply transform -translate-x-1/2'
+      className='mx-2 flex max-w-full z-50 items-center fixed bottom-3 left-1/2 bg-blend-multiply transform -translate-x-1/2'
     >
       <MotionCard
         onMouseMove={({ pageX }) => {
