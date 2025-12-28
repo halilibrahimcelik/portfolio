@@ -1,23 +1,21 @@
-import ProjectDetail from '@/components/ProjectDetail/ProjectDetail';
-import { Heading } from '@/components/theme/typography';
-import GoBackButton from '@/components/ui/GoBackButton';
-import client from '@/lib/apolloClient';
+import ProjectDetail from "@/components/ProjectDetail/ProjectDetail";
+import { Heading } from "@/components/theme/typography";
+import GoBackButton from "@/components/ui/GoBackButton";
+import client from "@/lib/apolloClient";
 import {
-  FETCH_PROJETS_LIST,
+  FETCH_PROJECT_LISTS,
   FETCH_SINGLE_PROJECT,
   Project,
-} from '@/lib/queries';
-import { isSlugId, slugify } from '@/lib/utils';
-import { Link } from 'lucide-react';
-import { Metadata, NextPage } from 'next';
-import Image from 'next/image';
-import { redirect, notFound } from 'next/navigation';
+} from "@/lib/queries";
+import { isSlugId, slugify } from "@/lib/utils";
+import { Link } from "lucide-react";
+import { Metadata, NextPage } from "next";
+import Image from "next/image";
+import { redirect, notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
-
-// This function checks if the provided slug is an ID
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -29,8 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Try to fetch from cache first
     try {
       const { data: allProjectsData } = await client.query({
-        query: FETCH_PROJETS_LIST,
-        fetchPolicy: 'cache-only',
+        query: FETCH_PROJECT_LISTS,
+        fetchPolicy: "cache-only",
+        variables: { limit: 1000, skip: 0 },
       });
 
       // Find the project with the matching slug
@@ -44,8 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     } catch {
       // If cache-only fails, make a network request
       const { data: allProjectsData } = await client.query({
-        query: FETCH_PROJETS_LIST,
-        fetchPolicy: 'network-only', // Fallback to network
+        query: FETCH_PROJECT_LISTS,
+        fetchPolicy: "network-only", // Fallback to network
+        variables: { limit: 1000, skip: 0 },
       });
 
       // Find the project with the matching slug
@@ -65,23 +65,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data } = await client.query<{ projects: Project }>({
     query: FETCH_SINGLE_PROJECT,
     variables: { id: projectId },
-    fetchPolicy: 'cache-first',
+    fetchPolicy: "cache-first",
   });
 
   project = data.projects;
 
   return {
     title: project
-      ? project.title + ' ' + '| Halil Ibrahim Celik'
-      : 'Project not found',
-    description: project ? project.title : 'Project not found',
+      ? project.title + " " + "| Halil Ibrahim Celik"
+      : "Project not found",
+    description: project ? project.title : "Project not found",
     openGraph: {
-      title: project ? project.title : 'Project not found',
-      description: project ? project.title : 'Project not found',
+      title: project ? project.title : "Project not found",
+      description: project ? project.title : "Project not found",
       images: [
         {
-          url: project?.image.url || '',
-          alt: project ? project.title : 'Project not found',
+          url: project?.image.url || "",
+          alt: project ? project.title : "Project not found",
         },
       ],
     },
@@ -98,8 +98,9 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
     // Try to fetch from cache first
     try {
       const { data: allProjectsData } = await client.query({
-        query: FETCH_PROJETS_LIST,
-        fetchPolicy: 'cache-only',
+        query: FETCH_PROJECT_LISTS,
+        fetchPolicy: "cache-only",
+        variables: { limit: 1000, skip: 0 },
       });
 
       // Find the project with the matching slug
@@ -113,8 +114,9 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
     } catch {
       // If cache-only fails, make a network request
       const { data: allProjectsData } = await client.query({
-        query: FETCH_PROJETS_LIST,
-        fetchPolicy: 'network-only', // Fallback to network
+        query: FETCH_PROJECT_LISTS,
+        fetchPolicy: "network-only", // Fallback to network
+        variables: { limit: 1000, skip: 0 },
       });
 
       // Find the project with the matching slug
@@ -131,13 +133,19 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   }
 
   // Now fetch the project using the correct ID
-  const { data } = await client.query<{ projects: Project }>({
-    query: FETCH_SINGLE_PROJECT,
-    variables: { id: projectId },
-    fetchPolicy: 'cache-first',
-  });
+  try {
+    const { data } = await client.query<{ projects: Project }>({
+      query: FETCH_SINGLE_PROJECT,
+      variables: { id: projectId },
+      fetchPolicy: "cache-first",
+    });
 
-  project = data.projects;
+    project = data.projects;
+  } catch (error) {
+    console.error("GraphQL Error:", error);
+    console.error("Project ID:", projectId);
+    return notFound();
+  }
 
   if (!project) {
     return notFound();
@@ -152,31 +160,31 @@ const ProjectDetailsPage: NextPage<Props> = async ({ params }) => {
   }
   return (
     <div>
-      <div className='flex w-full flex-col gap-3 md:gap-1 md:flex-row  justify-content-center md:justify-between  items-center'>
-        <div className='flex   items-center  md:items-start flex-col gap-1 '>
-          <Heading className='flex-1 ' variant='h2'>
+      <div className="flex w-full flex-col gap-3 md:gap-1 md:flex-row  justify-content-center md:justify-between  items-center">
+        <div className="flex   items-center  md:items-start flex-col gap-1 ">
+          <Heading className="flex-1 " variant="h2">
             {project.title}
           </Heading>
 
           <a
-            className='text-sm wtext-muted-foreground cursor-pointer transition-all ease-in duration-150 opacity-100 hover:opacity-80 hover:scale-[1.02]  flex items-center gap-1 '
+            className="text-sm wtext-muted-foreground cursor-pointer transition-all ease-in duration-150 opacity-100 hover:opacity-80 hover:scale-[1.02]  flex items-center gap-1 "
             href={project.websiteUrl}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <Link size={20} />
-            <span className='max-w-[380px] md:max-w-[400px]    text-ellipsis whitespace-nowrap    overflow-hidden '>
-              {' '}
+            <span className="max-w-[380px] md:max-w-[400px]    text-ellipsis whitespace-nowrap    overflow-hidden ">
+              {" "}
               {project.websiteUrl}
             </span>
           </a>
         </div>
 
-        <GoBackButton className='w-full md:w-fit block' url='/projects' />
+        <GoBackButton className="w-full md:w-fit block" url="/projects" />
       </div>
-      <hr className='mt-1 mb-4' />
+      <hr className="mt-1 mb-4" />
       <Image
-        className='rounded-lg mb-4 '
+        className="rounded-lg mb-4 "
         priority
         src={project.image.url}
         alt={project.title}
