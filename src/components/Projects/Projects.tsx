@@ -1,12 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProjectItem from "./ProjectItem";
 import { FETCH_PROJECT_LISTS, Project } from "@/lib/queries";
-import { AnimatePresence } from "framer-motion";
 import ProjectPagination from "./ProjectPagination";
 import { useQuery } from "@apollo/client";
 import ProjectsSkeleton from "./ProjectsSkeleton";
-import { useEffect } from "react";
+import { PAGE_SIZE } from "@/types";
 
 type Props = {
   projects: Project[];
@@ -18,8 +17,8 @@ const Projects: React.FC<Props> = ({ projects, total }) => {
   const [projectsData, setProjectsData] = useState<Project[]>(projects);
   const { loading, data } = useQuery(FETCH_PROJECT_LISTS, {
     variables: {
-      limit: 6,
-      skip: (currentPage - 1) * 6,
+      limit: PAGE_SIZE.PROJECTS,
+      skip: (currentPage - 1) * PAGE_SIZE.PROJECTS,
     },
   });
   useEffect(() => {
