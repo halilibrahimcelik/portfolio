@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client";
 import { Document } from "@contentful/rich-text-types";
 
-export const FETCH_PROJETS_LIST = gql`
+export const FETCH_PROJECT_LISTS = gql`
   query FetchList($limit: Int!, $skip: Int!) {
     projectsCollection(limit: $limit, skip: $skip) {
+      total
       items {
         sys {
           id
         }
-
         image {
           url
           title
@@ -202,6 +202,7 @@ export interface StacksCollection {
 }
 export interface ProjectsCollection {
   projectsCollection: {
+    total: number;
     items: Project[];
   };
 }
