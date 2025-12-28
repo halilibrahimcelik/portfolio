@@ -26,7 +26,6 @@ const ProjectsPage: NextPage = async () => {
       <Projects
         projects={data.projectsCollection.items}
         total={data.projectsCollection.total}
-        pageSize={PAGE_SIZE.PROJECTS}
       />
     </>
   );

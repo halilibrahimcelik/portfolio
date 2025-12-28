@@ -1,36 +1,56 @@
 "use client";
 import React, { useState } from "react";
 import ProjectItem from "./ProjectItem";
-import { Project } from "@/lib/queries";
+import { FETCH_PROJECT_LISTS, Project } from "@/lib/queries";
 import { AnimatePresence } from "framer-motion";
 import ProjectPagination from "./ProjectPagination";
+import { useQuery } from "@apollo/client";
+import ProjectsSkeleton from "./ProjectsSkeleton";
+import { useEffect } from "react";
 
 type Props = {
   projects: Project[];
   total: number;
-  pageSize: number;
 };
 
-const Projects: React.FC<Props> = ({ projects, total, pageSize }) => {
+const Projects: React.FC<Props> = ({ projects, total }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsData, setProjectsData] = useState<Project[]>(projects);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    // Fetch new projects data based on the page number if needed
-  };
+  const { loading, data } = useQuery(FETCH_PROJECT_LISTS, {
+    variables: {
+      limit: 6,
+      skip: (currentPage - 1) * 6,
+    },
+  });
+  useEffect(() => {
+    if (data) {
+      setProjectsData(data.projectsCollection.items);
+    }
+  }, [data]);
 
   return (
-    <ul className="grid  grid-cols-1 my-5  gap-4 lg:grid-cols-2">
-      <AnimatePresence mode="sync">
-        {projectsData.map((project, index) => {
-          return (
-            <ProjectItem key={project.sys.id} project={project} index={index} />
-          );
-        })}
-      </AnimatePresence>
-      <ProjectPagination total={total} />
-    </ul>
+    <>
+      <ul className="grid  grid-cols-1 my-5  gap-4 lg:grid-cols-2">
+        {loading ? (
+          <ProjectsSkeleton />
+        ) : (
+          <>
+            {projectsData.map((project, index) => (
+              <ProjectItem
+                key={project.sys.id}
+                project={project}
+                index={index}
+              />
+            ))}
+          </>
+        )}
+      </ul>
+      <ProjectPagination
+        total={total}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </>
   );
 };
 export default Projects;
