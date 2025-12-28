@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client';
-import { Document } from '@contentful/rich-text-types';
+import { gql } from "@apollo/client";
+import { Document } from "@contentful/rich-text-types";
 
 export const FETCH_PROJETS_LIST = gql`
-  query FetchList {
-    projectsCollection {
+  query FetchList($limit: Int!, $skip: Int!) {
+    projectsCollection(limit: $limit, skip: $skip) {
       items {
         sys {
           id
