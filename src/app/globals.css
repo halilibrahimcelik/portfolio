@@ -165,7 +165,7 @@ body {
 }
 
 .gradient-border-pseudo::before {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   inset: -2px;
@@ -196,7 +196,7 @@ body {
 }
 
 .animated-border-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -3px;
   right: -3px;
@@ -210,7 +210,7 @@ body {
   animation: movingBorder 6s linear infinite;
   filter: blur(2px);
 }
-.custom-zoom [data-rmiz-modal-overlay='visible'] {
+.custom-zoom [data-rmiz-modal-overlay="visible"] {
   background-color: rgba(56, 58, 89, 0);
 }
 @keyframes movingBorder {

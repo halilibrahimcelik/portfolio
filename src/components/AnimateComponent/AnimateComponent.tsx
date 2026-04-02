@@ -1,7 +1,7 @@
-'use client';
-import { HTMLMotionProps, motion, useReducedMotion } from 'framer-motion';
+"use client";
+import { HTMLMotionProps, motion, useReducedMotion } from "framer-motion";
 
-interface Props extends HTMLMotionProps<'div'> {
+interface Props extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   className?: string;
 }
