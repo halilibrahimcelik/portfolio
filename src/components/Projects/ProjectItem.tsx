@@ -3,7 +3,7 @@ import AnimatedCard from "../ui/AnimatedCard";
 import Link from "next/link";
 import Image from "next/image";
 import { Heading } from "../theme/typography";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Props = {
   project: Project;
@@ -11,13 +11,18 @@ type Props = {
 };
 
 const ProjectItem: React.FC<Props> = ({ project, index }) => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <motion.li
-      initial={{ opacity: 0, y: -20 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      exit={shouldReduceMotion ? undefined : { opacity: 0, y: -20 }}
       className="h-fit"
-      transition={{ duration: 0.3, ease: "easeInOut", delay: 0.1 * index }}
+      transition={
+        shouldReduceMotion
+          ? { duration: 0 }
+          : { duration: 0.3, ease: "easeInOut", delay: 0.1 * index }
+      }
     >
       <Link
         className="w-full h-full flex flex-col items-center justify-center"

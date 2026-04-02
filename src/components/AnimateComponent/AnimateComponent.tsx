@@ -1,5 +1,5 @@
 'use client';
-import { HTMLMotionProps, motion } from 'framer-motion';
+import { HTMLMotionProps, motion, useReducedMotion } from 'framer-motion';
 
 interface Props extends HTMLMotionProps<'div'> {
   children: React.ReactNode;
@@ -10,15 +10,16 @@ const AnimateComponent: React.FC<Props> = ({
   className,
   ...props
 }) => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={props.initial}
-      whileInView={props.whileInView}
+      initial={shouldReduceMotion ? false : props.initial}
+      whileInView={shouldReduceMotion ? undefined : props.whileInView}
       viewport={props.viewport}
-      transition={props.transition}
+      transition={shouldReduceMotion ? { duration: 0 } : props.transition}
       slot={props.slot}
       animate={props.animate}
-      exit={props.exit}
+      exit={shouldReduceMotion ? undefined : props.exit}
       className={`${className}`}
     >
       {children}
