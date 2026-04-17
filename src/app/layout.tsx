@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Rubik, Rubik_Mono_One } from 'next/font/google';
+import { Press_Start_2P, Rubik, Rubik_Mono_One } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import BgIcon from '@/components/icons/BgIcon';
@@ -17,6 +17,11 @@ const rubikMonoOneFont = Rubik_Mono_One({
   subsets: ['latin'],
   weight: '400',
 });
+const pressStart2P = Press_Start_2P({
+  variable: '--font-press-start',
+  subsets: ['latin'],
+  weight: '400',
+});
 
 export const metadata: Metadata = {
   title: 'Halil | Frontend Developer',
@@ -30,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${rubikFont.variable} ${rubikMonoOneFont.variable} `}>
+      <body className={`${rubikFont.variable} ${rubikMonoOneFont.variable} ${pressStart2P.variable}`}>
         <ApolloClientProvider>
           <ThemeProvider
             attribute='class'
