@@ -425,9 +425,9 @@ function draw(
     ctx.fillStyle = "#f87171";
     ctx.shadowColor = "rgba(248,113,113,0.4)";
     ctx.shadowBlur = 10;
-    ctx.fillText("YOU DRIFTED OFF", W / 2, H / 2 - 30);
+    ctx.fillText("YOU DRIFTED OFF", W / 2, H / 2 - 32);
     ctx.shadowBlur = 0;
-    ctx.font = '12px "Press Start 2P"';
+    ctx.font = '13px "Press Start 2P"';
     ctx.fillStyle = "#9ca3af";
     ctx.fillText(
       `SCORE  ${String(Math.floor(state.score)).padStart(4, "0")}`,
@@ -438,13 +438,14 @@ function draw(
       ctx.fillStyle = "#fbbf24";
       ctx.shadowColor = "rgba(251,191,36,0.4)";
       ctx.shadowBlur = 8;
-      ctx.fillText("✦ NEW BEST ✦", W / 2, H / 2 + 6);
+      ctx.font = '12px "Press Start 2P"';
+      ctx.fillText("✦ NEW BEST ✦", W / 2, H / 2 + 12);
       ctx.shadowBlur = 0;
     }
     const bw = 130,
       bh = 26,
       bx = W / 2 - bw / 2,
-      by = H / 2 + 14;
+      by = H / 2 + 30;
     const bg = ctx.createLinearGradient(bx, by, bx + bw, by);
     bg.addColorStop(0, "#6c8cff");
     bg.addColorStop(1, "#a78bfa");
@@ -454,7 +455,7 @@ function draw(
     ctx.fill();
     ctx.font = '12px "Press Start 2P"';
     ctx.fillStyle = "#fff";
-    ctx.fillText("▶  RETRY", W / 2, by + 16);
+    ctx.fillText("▶  RETRY", W / 2, by + 20);
     ctx.textAlign = "left";
   }
 }
