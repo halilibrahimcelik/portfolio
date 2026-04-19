@@ -70,10 +70,7 @@ function makeInitialState(): GameState {
   return {
     phase: "idle",
     score: 0,
-    best:
-      typeof window !== "undefined"
-        ? parseInt(localStorage.getItem("moonrun_best") ?? "0", 10)
-        : 0,
+    best: 0,
     astronaut: { y: GROUND_Y - ASTRO_H, vy: 0, onGround: true, jumpCount: 0 },
     obstacles: [],
     dust: [],
@@ -471,11 +468,15 @@ export function useMoonRun(
   const stateRef = useRef<GameState>(makeInitialState());
   const rafRef = useRef<number | null>(null);
 
-  // Load best from localStorage on mount
+  // Load global highscore from Redis on mount
   useEffect(() => {
-    const saved = parseInt(localStorage.getItem("moonrun_best") ?? "0", 10);
-    stateRef.current.best = saved;
-    setBest(saved);
+    fetch("/api/highscore")
+      .then((r) => r.json())
+      .then(({ highscore }) => {
+        stateRef.current.best = highscore;
+        setBest(highscore);
+      })
+      .catch(() => {});
   }, []);
 
   const stopLoop = useCallback(() => {
@@ -560,7 +561,6 @@ export function useMoonRun(
       setScore(Math.floor(s.score));
       if (s.score > s.best) {
         s.best = s.score;
-        localStorage.setItem("moonrun_best", String(Math.floor(s.best)));
         setBest(Math.floor(s.best));
         // Mini confetti mid-run on first beat
         if (
@@ -581,6 +581,18 @@ export function useMoonRun(
         if (s.hasPlayed && s.score > 0 && s.score >= s.best) {
           setTimeout(fireBurstConfetti, 350);
         }
+        // Submit score to Redis
+        fetch("/api/highscore", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ score: Math.floor(s.score) }),
+        })
+          .then((r) => r.json())
+          .then(({ highscore }) => {
+            stateRef.current.best = highscore;
+            setBest(highscore);
+          })
+          .catch(() => {});
       }
     }
 
