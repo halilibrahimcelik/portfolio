@@ -15,13 +15,13 @@ if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
   );
 }
 
-const httpLink = new HttpLink({
+const contentfulLink = new HttpLink({
   uri: `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}`,
   headers: {
     Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
   },
 });
-// Log any GraphQL errors or network error that occurred
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) =>
@@ -34,7 +34,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-  link: from([errorLink, httpLink]),
+  link: from([errorLink, contentfulLink]),
   cache: new InMemoryCache(),
 });
 

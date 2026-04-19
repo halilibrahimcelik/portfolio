@@ -468,17 +468,6 @@ export function useMoonRun(
   const stateRef = useRef<GameState>(makeInitialState());
   const rafRef = useRef<number | null>(null);
 
-  // Load global highscore from Redis on mount
-  useEffect(() => {
-    fetch("/api/highscore")
-      .then((r) => r.json())
-      .then(({ highscore }) => {
-        stateRef.current.best = highscore;
-        setBest(highscore);
-      })
-      .catch(() => {});
-  }, []);
-
   const stopLoop = useCallback(() => {
     if (rafRef.current !== null) {
       cancelAnimationFrame(rafRef.current);
@@ -581,13 +570,13 @@ export function useMoonRun(
         if (s.hasPlayed && s.score > 0 && s.score >= s.best) {
           setTimeout(fireBurstConfetti, 350);
         }
-        // Submit score to Redis
+        // Submit score — server only updates Redis if it's a new global best
         fetch("/api/highscore", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ score: Math.floor(s.score) }),
         })
-          .then((r) => r.json())
+          .then((res) => res.json())
           .then(({ highscore }) => {
             stateRef.current.best = highscore;
             setBest(highscore);
@@ -599,6 +588,17 @@ export function useMoonRun(
     draw(ctx, s, s.frameCount);
     rafRef.current = requestAnimationFrame(tick);
   }, [canvasRef]);
+
+  // Load global highscore on mount — unstable_cache on the server prevents Redis hits every refresh
+  useEffect(() => {
+    fetch("/api/highscore")
+      .then((res) => res.json())
+      .then(({ highscore }) => {
+        stateRef.current.best = highscore;
+        setBest(highscore);
+      })
+      .catch(() => {});
+  }, []);
 
   // Start / stop RAF based on phase
   useEffect(() => {
