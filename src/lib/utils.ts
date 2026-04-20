@@ -66,5 +66,6 @@ export function slugify(text: string): string {
     .replace(/\-\-+/g, '-'); // Replace multiple - with single -
 }
 export function isSlugId(slug: string): boolean {
+  //You should define  purpose of this util function
   return /^[a-zA-Z0-9]{16,}$/.test(slug);
 }
