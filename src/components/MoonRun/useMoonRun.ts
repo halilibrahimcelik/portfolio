@@ -589,7 +589,6 @@ export function useMoonRun(
     rafRef.current = requestAnimationFrame(tick);
   }, [canvasRef]);
 
-  // Load global highscore on mount — unstable_cache on the server prevents Redis hits every refresh
   useEffect(() => {
     fetch("/api/highscore")
       .then((res) => res.json())
